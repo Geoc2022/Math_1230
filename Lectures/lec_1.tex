@@ -1,0 +1,70 @@
+\lecture{1}{1/26/2023}{}
+
+\section{Intro}
+Graph Theory is important
+
+\section{Fundamental Concepts}
+\begin{definition}[graph]
+	\label{def:graph}
+	A graph is a pair \((V,E)\) where \(V\) is the vertex space and \(E\) is the edge space.
+\end{definition}
+
+\begin{example}[petersen graph]
+	\label{ex:petersen graph}
+	A element subset of \(\{1,2,3,4,5\}\) connected by disjointedness
+	\newcommand{\petersengraph}{
+	\begin{tikzpicture}[every node/.style={draw,circle,thick}]
+		\graph[clockwise, radius=2cm] {subgraph C_n [n=5,name=A] };
+		\graph[clockwise, radius=1cm] {subgraph I_n [n=5,name=B] };
+	  
+		\foreach \i [evaluate={\j=int(mod(\i+2+4,5)+1)}]% using Paul Gaborit's optimisation
+		   in {1,2,3,4,5}{
+		  \draw (A \i) -- (B \i);
+		  \draw (B \j) -- (B \i);
+		}
+	\end{tikzpicture}
+	}
+	\[
+		\petersengraph
+	\]
+\end{example}
+
+\begin{note}
+	In this course we are excluding multiple edges and self loops
+\end{note}
+
+\begin{definition}[vertex degrees]
+	\label{def:vertex degrees}
+	Let, \(G = (V, E)\), \(v \in V\), \(e \in E\)
+	\(e\) are incident if \(v \in e\) i.e. \(v\) is an endpoint of \(e\)  
+\end{definition}
+
+\begin{lemma}
+	\[
+		\sum_{v \in V} deg(v) = \sum_{v \in V}\sum_{v \in e} 1 = \sum_{v \in e} \sum_{v \in V} 1 = 2 |E|  
+	\]
+\end{lemma}
+\begin{proof}
+	Every edge has two vertices
+\end{proof}
+
+\begin{definition}[complete graph]
+	\label{def:complete graph}
+	Represented \(K_n\), the graph has \(V = {1 \ldots n}\) and all possible edges
+	\[
+		|E| = \frac{n(n-1)}{2} = nCr(n, 2)
+	\]
+\end{definition}
+
+\begin{definition}[isomorphic]
+	\label{def:isomorphic}
+	Graphs \(G_1\) and \(G_2\) are isomorphic if there exists a bijection, \(f: v_1 \to v_2\), s.t. \(\{u, v\} \in E_1 \iff \{f(u), f(v)\}\) 
+\end{definition}
+
+\subsection{Connectivity}
+\begin{definition}[connected]
+	\label{def:connected}
+	\(u\) and \(v\) are connected if there exists a path from \(u\) to \(v\)
+	A graph is connected when all vertices are connected   
+\end{definition}
+

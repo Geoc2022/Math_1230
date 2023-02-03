@@ -1,0 +1,88 @@
+\lecture{3}{2023-02-02}{}
+
+\begin{remark}
+	Algorithmic Bipartite Testing
+	\begin{itemize}
+		\item Brute force: \(2^{\lVert V \rVert} \cdot \lVert E \rVert \) 
+		\item Proof Algorithm: where we color the vertices and check the edges \(\lVert V \rVert + \lVert E \rVert \) 
+	\end{itemize}
+\end{remark}
+
+\begin{remark}
+	Local to Global Results
+
+	Global properties always lead to local results (ex. bipartite implies no odd cycles). In West it is called "TONCAS"
+\end{remark}
+
+\subsection{Eulerian Graphs}
+
+\begin{definition}[euler tour]
+	\label{def:euler tour}
+	A closed walk that visits each edge of a graph exactly once
+\end{definition}
+
+\begin{definition}[eulerian graph]
+	\label{def:eulerian graph}
+	A graph with a \nameref{def:euler tour} is Eulerian.
+\end{definition}
+
+\begin{proposition}
+	A graph is Eulerian iff every vertex has even degree.
+\end{proposition}
+\begin{proof}
+	By induction:
+	
+	\emph{Base Case:} Trivial: 0 edges
+
+	\emph{Inductive Step:} Let \(F\) be an edge of \(C\) a cycle in \(G\). Then consider \(H = (V, E\setminus)\). H has fewer edges, so each component has an Euler tour by induction
+\end{proof}
+
+\begin{note}
+	This is another example of local and global properties where the parity of the degree is the local property and Eulerian is the global property
+\end{note} 
+
+\section{Trees}
+\begin{definition}[tree]
+	\label{def:tree}
+	A tree is a \nameref{def:connected} and \hyperref[def:cycle]{acyclic} graph
+	\begin{definition}[leaf]
+		\label{def:leaf}
+		A node of degree \(1\) 
+	\end{definition}
+\end{definition}
+
+\begin{lemma}
+	Any \nameref{def:connected} subgraph of a \nameref{def:tree} is a \nameref{def:tree} 
+\end{lemma}
+\begin{proof}
+	By contradiction: \\
+	Assume that the connected subgraph is not a tree, then the subgraph has a cycle, therefore the graph has a cycle, but trees are acyclic. Therefore, contradiction.
+\end{proof}
+
+\begin{lemma}
+	A tree with \(n\) vertices has \(n-1\) edges
+\end{lemma}
+\begin{proof}
+	By induction:
+	
+	\emph{Base Case:} There are \(0\) edges in a \(1\) vertex tree
+
+	\emph{Inductive Step:} Suppose this holds for \(n\).
+	Let \(T\) be a tree with \(n+1\) vertices, then by removing one vertex, which must be a leaf — removing a non-leaf would make the graph unconnected, you remove one edge and the graph becomes the \(n\) case.
+	Therefore, the \(n+1\) tree has \(1\) more edge than an \(n\) tree.
+\end{proof}
+
+\begin{definition}[spanning tree]
+	\label{def:spanning tree}
+	A spanning tree (ST) is a subgraph of a \nameref{def:connected} that is a \nameref{def:tree} that contains all vertices of the original graph
+\end{definition}
+
+\begin{lemma}
+	There is a spanning tree in every connected graph
+\end{lemma}
+\begin{proof}
+	By contradiction: \\
+	Assume \(G\) is a connected graph with no ST.
+	Let \(T\) be a connected subgraph of \(G\)  that has the same vertices as \(G\) with the smallest number of edges. Since \(T\) is not a tree, it does not have a cycle. However, \(T\) containing a cycle would imply that \(T\) is not a subgraph that has the smallest number of edges.
+	Therefore, contradiction test 
+\end{proof}
