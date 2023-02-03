@@ -4,6 +4,14 @@
 \date{Due February 3, 2023 by 5pm} 
 \title{Homework 1}
 
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\ff}{\mathbb{F}}
+\renewcommand{\gg}{\mathbb{G}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\zz}{\mathbb{Z}}
+
 \usepackage{graphicx,xypic}
 \usepackage{amsthm}
 \usepackage{amsmath,amssymb}
@@ -120,7 +128,7 @@ How many cycles of length $n$ are there in the complete graph $K_n$?
 \end{problem}
 
 \begin{proof}
-We can define a cycle as a list of vertices (like how we label walks). For example, \(v_1\ldots v_n\). There are \(n!\) different ways to order this list, but we must divide this by \(n\) (permutations are isomorphic since a cycle can start from \(n\) starting points) and by \(2\) since the permutations are isomorphic backwards and forwards. Therefore, there are \(\frac{(n-1)!}{2}\) cycles of length \(n\) 
+We can define a cycle as a list of vertices (like how we label walks). For example, \(v_1\ldots v_n\) There are \(n!\) different ways to order this list, but we must divide this by \(n\) (permutations are isomorphic since a cycle can start from \(n\) starting points) and by \(2\) since the permutations are isomorphic backwards and forwards. Therefore, there are \(\frac{(n-1)!}{2}\) cycles of length \(n\) 
 \end{proof}
 
 \begin{problem}
@@ -132,7 +140,76 @@ Define the hypercube graph $Q_k$ as the graph with a vertex for each tuple $(a_1
 \end{problem}
 
 \begin{proof}
+\begin{enumerate}[(a)]
+	\item The following will show that cases where the 4-cycles are disjoint, intersect in a single vertex, or intersect in a single edge are possible and then show intersection beyond 2 points is not possible:
+	
+	Example of existence of 2 disjoint 4-cycles: 
 
+	\(\{(0000), (0001), (0011), (0010)\}\) and \(\{(0101), (0111), (0100), (0110)\}\)
+
+	Example of existence of 2 4-cycles that intersect at a single vertex: 
+
+	\(\{(0000), (0001), (0011), (0010)\}\) and \(\{(0000), (0100), (1000), (1100)\}\)
+
+	Example of existence of 2 4-cycles that intersect in a single edge: 
+
+	\(\{(0000), (0001), (0011), (0010)\}\) and \(\{(0000), (0010), (1000), (1010)\}\)
+
+	Explanation of nonexistence 4-cycles that intersect at 3 vertices:
+
+	For all 4-cycles the addition of all points must be equal to \((0 \ldots 0)\) in order to be closed cycles. For example, in the case of \(\{(0000), (0001), (0011), (0010)\}\), \((0 + 0 + 0 + 0, 0 + 0 + 0 + 0, 0 + 0 + 1 + 1, 0 + 1 + 1 + 0) = (0,2,2,0)=(0,0,0,0)\) Essentially, we are working in \(\zz_{2} \times \ldots \times \zz_{2}\). When we add 3 points in a cycle we get the 4th point since \( p_1 + p_2 + p_3 + p_4 = (0,0,0,0) \iff p_1 + p_2 + p_3 = -p_4 = p_4\) Therefore, if there were two 4-cycles that intersect at 3 vertices, they must be the same cycle - a contradiction.
+
+	Explanation of nonexistence 4-cycles that intersect at more than 4 vertices:
+
+	If the two 4-cycles intersect at 4 vertices they must be the same cycle - a contradiction. If they intersect at more than 4 vertices that is a contradiction with the condition that there are 4 vertices in 4-cycles
+
+	\item In the last problem we showed that a 4-cycle in a hypercube graph cannot intersect another separate 4-cycle with 3 points. However, this is possible in \(K_{2,3}\):
+	
+	\(K_{2,3}\)
+	% https://q.uiver.app/?q=WzAsNSxbMSwwLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFszLDAsIlxcYnVsbGV0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMSwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	& \bullet && \bullet \\
+	\\
+	\bullet && \bullet && \bullet
+	\arrow[dashed, no head, from=1-2, to=3-1]
+	\arrow[dashed, no head, from=1-2, to=3-5]
+	\arrow[dashed, no head, from=1-2, to=3-3]
+	\arrow[dashed, no head, from=1-4, to=3-1]
+	\arrow[dashed, no head, from=1-4, to=3-3]
+	\arrow[dashed, no head, from=1-4, to=3-5]
+\end{tikzcd}\]
+	
+	1st 4-cycle in \(K_{2,3}\)
+% https://q.uiver.app/?q=WzAsNSxbMSwwLCJhIl0sWzAsMiwieCJdLFs0LDIsInoiXSxbMiwyLCJ5Il0sWzMsMCwiYiJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	& a && b \\
+	\\
+	x && y && z
+	\arrow[no head, from=1-2, to=3-1]
+	\arrow[dashed, no head, from=1-2, to=3-5]
+	\arrow[no head, from=1-2, to=3-3]
+	\arrow[no head, from=1-4, to=3-1]
+	\arrow[no head, from=1-4, to=3-3]
+	\arrow[dashed, no head, from=1-4, to=3-5]
+\end{tikzcd}\]
+
+	2nd 4-cycle in \(K_{2,3}\)
+% https://q.uiver.app/?q=WzAsNSxbMSwwLCJhIl0sWzAsMiwieCJdLFs0LDIsInoiXSxbMiwyLCJ5Il0sWzMsMCwiYiJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwxLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	& a && b \\
+	\\
+	x && y && z
+	\arrow[dashed, no head, from=1-2, to=3-1]
+	\arrow[no head, from=1-2, to=3-5]
+	\arrow[no head, from=1-2, to=3-3]
+	\arrow[dashed, no head, from=1-4, to=3-1]
+	\arrow[no head, from=1-4, to=3-3]
+	\arrow[no head, from=1-4, to=3-5]
+\end{tikzcd}\]
+
+Both 4-cycles share \(a\), \(b\), \(y\), but are not the same 4-cycle  
+
+\end{enumerate}
 \end{proof}
 
 \begin{problem}
@@ -144,7 +221,7 @@ For all edges in \(\widetilde{G}\), \(\widetilde{G}\) has an edge \(\iff \) \(G\
 \end{proof}
 
 
-\begin{problem}\ 
+\begin{problem}
 \begin{enumerate}[(a)]
 \item Determine the complement of the graphs $P_3$ and $P_4$. (Recall that $P_n$ is the path with $n$ vertices. It has $n-1$ edges.)
 \item We say that $G$ is self-complementary if $G$ is isomorphic $\bar G$. Prove that if $G$ is self-complementary with $n$ vertices, then either $n$ is divisible by $4$ or $n-1$ is divisible by $4$. \footnote{Hint: count edges}
@@ -153,8 +230,8 @@ In fact, whenever $n$ or $n-1$ is divisible by $4$, there is a self-complementar
 \end{problem}
 
 \begin{proof}
-\begin{enumerate}[(a)]
-    \item \(\widetilde{P_3}\) \& \(\widetilde{P_4}\): 
+\begin{enumerate}
+    \item[(a)] \(\widetilde{P_3}\) \& \(\widetilde{P_4}\): 
     
     \(\widetilde{P_3}\) 
     % https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJjdXJ2ZSI6LTMsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
@@ -173,7 +250,7 @@ In fact, whenever $n$ or $n-1$ is divisible by $4$, there is a self-complementar
 \end{tikzcd}\]
 \end{enumerate}
 
-    \item The sum of the number of edges of a graph and it's complement has to be the number of edges in \(K_n\) i.e \({n \choose 2} = n(n-1)/2\) and if \(G\) is self-complementary \(G\), it's complement, \(\widetilde{G}\), must have the same number of edges; therefore \(G\) and \(\widetilde{G}\) have \(n(n-1)/4\) edges. Since the number of edges is an integer, \(G\) can only be self-complementary when \(n(n-1)/4\) is an integer, which is equivalent to either \(n\) or \((n-1)\) being divisible by 4 since only either \(n\) or \((n-1)\) is even and so could divide 4. 
+    \item[(b)] The sum of the number of edges of a graph and it's complement has to be the number of edges in \(K_n\) i.e \({n \choose 2} = n(n-1)/2\) and if \(G\) is self-complementary \(G\), it's complement, \(\widetilde{G}\), must have the same number of edges; therefore \(G\) and \(\widetilde{G}\) have \(n(n-1)/4\) edges. Since the number of edges is an integer, \(G\) can only be self-complementary when \(n(n-1)/4\) is an integer, which is equivalent to either \(n\) or \((n-1)\) being divisible by 4 since only either \(n\) or \((n-1)\)  could divide 4 (\(n\) and \(n-1\) are consecutive). 
 \end{proof}
 
 
@@ -181,6 +258,8 @@ In fact, whenever $n$ or $n-1$ is divisible by $4$, there is a self-complementar
 \end{problem}
 
 \begin{proof}
+We will suppose the cycles are possible and show how they lead to contradictions of the definition of the Petersen graph:
+
 Suppose there exists a 3-cycle then this would require:
 % https://q.uiver.app/?q=WzAsMyxbMCwwLCJhYiJdLFsxLDAsImNkIl0sWzAsMSwiZWYiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDEsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
@@ -191,7 +270,7 @@ Suppose there exists a 3-cycle then this would require:
 	\arrow[no head, from=2-1, to=1-2]
 \end{tikzcd}\]
 
-Where \(a\), \(b\), \(c\), \(d\), \(e\), and \(f\) are all different, by definition of the Petersen graph, but there are only 5 different choices
+Where \(a\), \(b\), \(c\), \(d\), \(e\), and \(f\) are all different, to satisfy one of the Petersen graph definition conditions, but there is a contradiction with the Petersen graph definition condition that are only 5 different choices (there can be no \(f\) ).
 
 Suppose there exists a 4-cycle:
 
@@ -204,7 +283,7 @@ There must be 2 vertices which are disjoint from 1 vertex:
 	\arrow[no head, from=1-1, to=2-1]
 \end{tikzcd}\]
 
-There must be one repeated value between the two non-connected vertices since there are only 2 choices up to isomorphism from choosing between \(c\)  \(d\), and \(e\)  
+There must be one repeated value between the two non-connected vertices since there are only 2 choices up to isomorphism from choosing between \(c\)  \(d\), and \(e\) (we are limited to 5 different choices, \(a\), \(b\), \(c\), \(d\), and \(e\), by definition of the Petersen graph) 
 
 When we add another vertex, it also needs to be disjoint from the 2 vertices; therefore, it cannot be \(b\), \(c\), and \(e\) forcing it to choose the remaining \(a\) and \(b\), but this is a contradiction.
 
@@ -225,7 +304,7 @@ Let $G,H$ be a self-complementary graphs, and assume $G$ has with $4k$ vertices.
 \end{problem}
 
 \begin{proof}
-
+An algorithm for doing this would be to connect all vertices of \(H\) to all vertices in \(G\) that have even degree. We have shown in problem 5 that \(P_4\) is self-complementary and \(C_5\) is also self-complementary. Therefore, we can create any graph of \(n\), where either \(n\)  or \(n-1\) is divisible by \(4\), using a combination of \(P_4\) and \(C_5\)   
 \end{proof}
 
 
