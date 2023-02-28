@@ -29,13 +29,6 @@
 \begin{proposition}
 	A graph is Eulerian iff every vertex has even degree.
 \end{proposition}
-\begin{proof}
-	By induction:
-	
-	\emph{Base Case:} Trivial: 0 edges
-
-	\emph{Inductive Step:} Let \(F\) be an edge of \(C\) a cycle in \(G\). Then consider \(H = (V, E\setminus)\). H has fewer edges, so each component has an Euler tour by induction
-\end{proof}
 
 \begin{note}
 	This is another example of local and global properties where the parity of the degree is the local property and Eulerian is the global property
@@ -85,4 +78,11 @@
 	Assume \(G\) is a connected graph with no ST.
 	Let \(T\) be a connected subgraph of \(G\)  that has the same vertices as \(G\) with the smallest number of edges. Since \(T\) is not a tree, it does not have a cycle. However, \(T\) containing a cycle would imply that \(T\) is not a subgraph that has the smallest number of edges.
 	Therefore, contradiction test 
+\end{proof}
+
+\begin{proposition}
+    With a graph \(G\) where \(T, T^\prime \subset G\) s.t. \(e \in T, e \notin T^\prime\). Then there is edge \(e^\prime \in T^\prime \) s.t. \(T - e + e^\prime\)  is a spanning tree.
+\end{proposition}
+\begin{proof}
+    \(T\) is a tree \(\implies\) \(T - e\) is disconnected. \(T, T^\prime\) have the same vertex set \(\implies \exists e \in T^\prime\) that connects two components of \(T - e\) Lets claim that \(T - e + e^\prime\) is a spanning tree. It has the same number of edges and is connected, so it's a tree, and is spanning since it connects all edges. 
 \end{proof}

@@ -1,9 +1,0 @@
-\contentsline {section}{\numberline {0}Intro}{3}{section.0}%
-\contentsline {section}{\numberline {1}Fundamental Concepts}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Connectivity}{4}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Degree Sequences}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Bipartite graphs}{5}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Walks and Paths}{5}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Closed Walks and Cycles}{5}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Eulerian Graphs}{6}{subsection.1.6}%
-\contentsline {section}{\numberline {2}Trees}{6}{section.2}%

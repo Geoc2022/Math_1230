@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+
+\author{Math 123}
+\date{Due February 10, 2023 by 5pm} 
+\title{Homework 2}
+
+\usepackage{graphicx,xypic}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{problem}{Problem}
+\renewcommand*{\proofname}{{\color{blue}Solution}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Math 123, Homework 2}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+\input{../tikz_import.tex}
+
+\begin{document}
+
+\maketitle
+
+% You are required to put your name here:
+{\bf\Large Name: George Chemmala} 
+
+
+\vspace{.3in}
+Topics covered: bipartite graphs, Euler tours, degree sum formula, trees
+
+Instructions: 
+\begin{itemize}
+\item This assignment must be submitted on Gradescope by the due date. 
+\item If you collaborate with other students (which is encouraged!), please mention this near the corresponding problems. You must type your solutions alone. 
+\item If you are stuck, please ask for help (from me, a TA, a classmate). Use Campuswire!  
+\end{itemize}
+\pagebreak 
+
+
+
+\begin{problem}
+The complete bipartite graph $K_{n,m}$ is the graph with $n+m$ vertices $v_1,\ldots,v_n$ and $u_1,\ldots,u_m$ and edges $\{v_i,u_j\}$ for each $1\le i\le n$ and $1\le j\le m$. Determine the values $n,m$ so that $K_{n,m}$ is Eulerian.
+\end{problem}
+
+\begin{proof}
+A graph is Eulerian iff all vertices have even degree. In a bipartite graph, all vertices in \(v_1\ldots v_n\) connect to all vertices in \(u_1\ldots u_m\) so the degree of all vertices in \(v_1\ldots v_n\) is equal to \(m\), and by symmetry the degree of all vertices in  \(u_1\ldots u_m\) is equal to \(n\). Therefore, the graph Eulerian iff the degree of all vertices is even iff \(2|m \wedge 2|n\); therefore the graph \(K_{n,m}\) is Eulerian iff \(m\) and \(n\) are both even.
+\end{proof} 
+
+\begin{problem}
+Prove or disprove: 
+\begin{enumerate}[(a)]
+\item Every Eulerian bipartite graph has an even number of edges. 
+\item Every Eulerian graph with an even number of vertices has an even number of edges. 
+\end{enumerate} 
+\end{problem}
+
+\begin{proof}
+\begin{enumerate}
+	\item[ ]
+    \item[(a)] A bipartite graph can have its vertex set split into \(2\) colored sets. The edges are disjoint from each other in each of these colored sets (there is no edge between two vertices in the same colored set), so if we sum the degrees of the vertices in one of the colored sets we get the number of edges in the entire graph, and since the degrees of the vertices are even since the graph is Eulerian, the sum the degrees of the vertices is even and so the number of edges is even. 
+
+    \item[(b)] Counterexample (fish graph):
+    
+    % https://q.uiver.app/?q=WzAsNixbMCwxLCJcXGJ1bGxldCJdLFswLDAsIlxcYnVsbGV0Il0sWzEsMSwiXFxidWxsZXQiXSxbMSwwLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDEsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	\bullet & \bullet & \bullet \\
+	\bullet & \bullet & \bullet
+	\arrow[no head, from=2-1, to=1-1]
+	\arrow[no head, from=2-2, to=2-1]
+	\arrow[no head, from=2-2, to=1-1]
+	\arrow[no head, from=2-2, to=1-2]
+	\arrow[no head, from=2-2, to=2-3]
+	\arrow[no head, from=2-3, to=1-3]
+	\arrow[no head, from=1-3, to=1-2]
+\end{tikzcd}\]
+
+    Here there are \(6\) vertices and \(7\) edges, and the graph has vertices of all even degree \(\iff\) the graph is Eulerian
+\end{enumerate}
+
+\end{proof}
+
+
+\begin{problem}Prove that every tree has at least two vertices of degree $1$. Classify trees with exactly two vertices of degree $1$. \footnote{Useful fact: a tree with $n$ vertices has $n-1$ edges. We will show this in class next week.}
+\end{problem}
+
+\begin{proof}
+Let \(T\) be a tree with more than \(2\) vertices. Then there exists a longest path, \(P\), between vertices \(u\) and \(v\) (which is unique in the tree) in \(T\). Both \(u\) and \(v\) must be degree \(1\) because if they were not, that would imply there is a vertex attached to either \(u\) or \(v\) and \(P\) would not be the longest path - a contradiction. Therefore, a tree must always have at least two vertices of degree 1.
+
+All trees with exactly two vertices are paths.
+We know that a tree with  $n$ vertices has $n-1$ edges. Therefore, \(|V| - |E| = 1\), \(2|V| - 2|E| = 2\), \(2|V| - \sum_{v \in V} \deg(v) = 2\), \(\sum_{v \in V} (2 - \deg(v)) = 2\) Therefore, when we remove the two leafs in \(V\) it is apparent the remaining vertices must have degree \(2\) (\(\sum_{v \in V\setminus{u,v}} (2 - \deg(v)) = 0\)).  
+\end{proof}
+
+\begin{problem}
+Determine the number of graphs with $7$-vertices, each of degree $4$ (up to isomorphism). \footnote{Hint: consider the complement. Your solution should not be long. Use may want to use the previous problem.} 
+\end{problem}
+
+\begin{proof}
+When taking the complement of graphs with $7$-vertices, each of degree $4$ we notice that each vertex must connect with only \(2\) other vertices since in the complement a vertex can not connect to \(5\) vertices (\(4\) vertices and itself). Therefore, the complement of graphs with $7$-vertices, each of degree $4$ is graphs where all the vertices have \(2\) degrees i.e. 2-regular graphs. For \(7\) vertices there are only 2 2-regular graphs (\(C_7, C_4 + C_3\)) since \(7 = 7 = 3 + 4\) and there no other possible graphs since there is no cycle smaller than \(C_3\) i.e. \(7 = 1 + 6 = 2 + 5\) are not possible because there are no \(C-1, C_2\).
+\end{proof}
+
+\begin{problem}
+Use induction on the number of edges to prove that a graph with no odd cycle is bipartite. 
+\end{problem}
+
+
+\begin{proof}
+It suffices to prove the statement for connected graphs – apply the argument to each component (addressed by Prof Bena here https://campuswire.com/c/GCDD00E4D/feed/17):
+
+By induction:
+
+\emph{Base Case:} When \(|E| = 0\) there are no connected vertices so there is no odd cycle and the graph must be bipartite since no vertices are connected to vertices of the same color.
+
+\emph{Inductive Step:} Assume a graph s.t. \(|E| = n - 1\) and no odd cycles is bipartite. Any connected vertices of the same color must be connected by a path of even vertices. Let us add an edge which maintains the restriction that there is no odd cycle in the graph. Suppose an edge is added between these vertices, then the graph is no longer bipartite since two vertices of the same color are connected, the addition of an edge will create an odd cycle — a contradiction. Therefore, when adding an edge to keep the graph bipartite, there must be no odd cycle.
+\end{proof}
+
+\begin{problem}
+Suppose there are two mountain trails, each starting at sea level and ending at the same elevation. Suppose hikers $A$,$B$ start hiking these two different trails at the same time. The Mountain Climber Problem asks if it is possible for $A$ and $B$ to hike to the top of their individual trails in a way so that they have the same elevation at every time.\footnote{It is important to note that the hikers are allowed to backtrack.} We model the trails by functions $f,g:[0,1]\rightarrow[0,1]$ with $f(0)=g(0)=0$ and $f(1)=g(1)=1$. In this problem you solve the Mountain Climber Problem in the case when $f$ and $g$ are piecewise linear continuous functions.\footnote{A function $f:[0,1]\rightarrow\mathbb R$ is piecewise linear if it's possible to express $[0,1]$ as a union of finitely many intervals, so that $f$ is linear ($x\mapsto ax+b$) on each. }
+\begin{enumerate}[(a)]
+\item Consider \[Z=\{(x,y)\in[0,1]\times[0,1]: f(x)=g(y)\}\]
+Assuming $f,g$ are piecewise linear, determine the local picture near $(x,y)$ in $Z$, considering cases based on the local pictures of $f$ and $g$ near $x$ and $y$, respectively.
+\item Observe that $Z$ can be given the structure of a graph $G$. Show that $G$ has exactly two vertices of odd degree. Deduce that there is a path in $G$ from $(0,0)$ to $(1,1)$.
+\end{enumerate} 
+\end{problem}
+
+\begin{proof}
+\begin{enumerate}
+    \item[(a)] The local picture near a point \((x,y)\) will where at least \(x\) or \(y\) is at a local min or local max. Either \(A\) or \(B\) has one choice in their direction. (I've seen this problem before, but I was a little confused about the meaning of local picture in this context)
+
+    \item[(b)] We can think of elements in \(Z\) as vertices where there is an edge between a vertex \((x_1, y_1)\) and \((x_2, y_2)\) if there exists a path such that \(A, B\) are moving the same direction. Therefore, whether \(A, B\) can hike to the top of their individual
+	trails in a way so that they have the same elevation at every time is equivalent to whether there exists a path from \((0,0)\) to \((1,1)\).
+
+	We know that \(2|E|\) is the sum of the degree of all vertices. Therefore, the number of all odd degree vertices is even. If that were not the case \(2|E|\), an even number, would equal the sum of the degrees of all vertices of even degree (an even number) and the sum of the degrees of all vertices of odd degree (an odd number since an odd times an odd is odd) — a contradiction.
+
+	In \(G\):
+	\begin{enumerate}
+		\item[.] \((0,0)\) must be a vertex of odd degree since both \(A,B\) can only go up
+		\item[.] \((x,y)\) where \(x\) and \(y\) are both a local min/max: 
+		if \(x\) and \(y\) are both a local min/max, \(A\) can choose to go left or right to go up/down, same with \(B\). So there must be four choices out of \((x,y)\) – even degree
+		\item[.] \((x,y)\) where \(x\) and \(y\) are either a local min or local max	(i.e. one is a local min and one is a local max):
+		Since \(A,B\) could not move left or right in the same direction (one could only move up while the other could only move down) there are 0 choices out of \((x,y)\) – even degree
+		\item[.] \((x,y)\) where only one of \(x\) and \(y\) is a local min or local max:
+		Without loss of generality, let \(A\) be at a local min/max, then whether \(A\) goes up/down through moving left or right \(B\) is forced to go up/down; therefore there are 2 choices (\(A\) moving left or right) out of \((x,y)\) – even degree
+		\item[.] \((1,1)\) must be a vertex of odd since both \(A,B\) can only go down 
+	\end{enumerate}
+	
+	Earlier we showed that a connected graph must contain an even number of odd degree vertices, so if a connected graph contains \((0,0)\), an odd degree vertex, it must also contain \((1,1)\) since there is no other possible odd degree vertices. Therefore, there exists a path from \((0,0)\) to \((1,1)\)  
+\end{enumerate}
+\end{proof}
+
+
+
+\end{document}

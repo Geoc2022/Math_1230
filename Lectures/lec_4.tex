@@ -1,0 +1,32 @@
+\lecture{4}{2023-02-09}{}
+
+Prüfer Code to Tree 
+
+\begin{example}[Prufer Code to Tree]
+    \label{ex:prufer code to tree}
+    Let's take the example \((1,4,1,1)\)
+
+    We know that vertices of deg \(1\) do not appear, so we start with an edge from \(2\) to \(1\)  then we remove \(1\) from the list. Next we start with \(4\) and add the next deg \(1\) vertex. Now we have a connection from \(4\) to \(1\) since it's left in the Prüfer code. Then we finally create a tree with vertices \(1,5,6\) and adjoin it.
+\end{example} 
+
+\begin{theorem}[1]
+    \label{thm:1}
+    For each sequence \((\vec{a_1} \ldots a_{n-2})\) there exists a unique tree \(T\) with \(P(T) = (\vec{a_1} \ldots a_{n-2})\)
+\end{theorem}
+\begin{proof}
+    By induction:
+    
+    \emph{Base Case:} \(n = 2\)
+    sequences have length \(n = 2 = 0\) and there is only one tree with \(2\) vertices
+
+    \emph{Inductive Step:}
+    For any tree with code \((\vec{a_1} \ldots a_{n-2})\) Let \(x\) be the smallest index not in the sequence then we can construct an edge between it and \(a_1\) and remove \(a_1\) from the code. Therefore, we have a code with one less element. And, by induction, \(\exists !\) a tree \(T^\prime\) with vertices \(\{1\ldots n\}\setminus{x}\)  and code \((a_2 \ldots a_{n-2})\).
+
+    The uniqueness come from the fact that \(T^\prime\) is unique and there is only one way to add an edge
+\end{proof}
+\begin{corollary}[cayley]
+    \label{cor:cayley}
+    There is a bijection between trees and these sequences. Therefore, we can count trees easily by counting sequences.
+\end{corollary}
+
+
