@@ -7,44 +7,48 @@
     A matching is a subset of \(M \subset E\) such that no two edges in \(M\) share a vertex  
 \end{definition}
 
+\begin{example}
+	% https://q.uiver.app/?q=WzAsNixbMCwwLCJcXGJ1bGxldCJdLFswLDEsIlxcYnVsbGV0Il0sWzEsMSwiXFxidWxsZXQiXSxbMSwwLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywyLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDEsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\[\begin{tikzcd}
+		\bullet & \bullet & \bullet \\
+		\bullet & \bullet & \bullet
+		\arrow[no head, from=1-1, to=2-1]
+		\arrow[dotted, no head, from=1-1, to=2-2]
+		\arrow[dotted, no head, from=1-2, to=2-2]
+		\arrow[no head, from=1-2, to=2-3]
+		\arrow[dotted, no head, from=1-3, to=2-3]
+		\arrow[no head, from=1-3, to=2-2]
+		\arrow[dotted, no head, from=1-3, to=2-1]
+		\arrow[dotted, no head, from=1-2, to=2-1]
+		\arrow[dotted, no head, from=1-1, to=2-3]
+	\end{tikzcd}\]
+\end{example}
+
 \begin{definition}[saturates]
     \label{def:saturates}
     For \(U \subset V\) say \(M\) saturates \(U\) if each \(u \in U\) is incident to some \(e \in M\) A matching that saturates \(V\) is called perfect
 \end{definition}  
 
-Perfect matching relate to bijections. 
+\begin{remark}
+	Perfect matching relate to bijections. 	
+\end{remark}
 
-\subsection*{Matchings in Bipartite Graphs}
+\subsection{Matchings in Bipartite Graphs}
 
 For \(G = (X \sqcup Y, E)\), is there a matching that saturates \(X\)?
-\begin{example}
-    % https://q.uiver.app/?q=WzAsNixbMCwwLCJcXGJ1bGxldCJdLFswLDEsIlxcYnVsbGV0Il0sWzEsMSwiXFxidWxsZXQiXSxbMSwwLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDQsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}
-	\bullet & \bullet & \bullet \\
-	\bullet & \bullet & \bullet
-	\arrow[dotted, no head, from=1-1, to=2-1]
-	\arrow[no head, from=1-1, to=2-2]
-	\arrow[no head, from=1-2, to=2-2]
-	\arrow[dotted, no head, from=1-2, to=2-3]
-	\arrow[no head, from=1-3, to=2-3]
-	\arrow[dotted, no head, from=1-3, to=2-2]
-	\arrow[no head, from=1-3, to=2-1]
-	\arrow[no head, from=1-2, to=2-1]
-	\arrow[no head, from=1-1, to=2-3]
-\end{tikzcd}\]
-\end{example}
 
-\begin{proposition}
-    Local to Global: (Saturated Matching for Bipartite Graph)
-    Let \(N(S)\) be set of vertices connected to vertices in \(S\). The local property is that for \(S \in X\), \(|S| \leq |N(S)|\)   
-\end{proposition}
+\begin{proposition}[saturated matching for bipartite graph]
+	\label{prop:saturated matching for bipartite graph}
+	Local to Global:
+    Let \(N(S)\) be set of vertices connected to vertices in \(S\). The local property is that for \(S \in X\), \(|S| \leq |N(S)|\) 	
+\end{proposition} 
 
 \begin{theorem}[Hall's Matching]
     \label{thm:hall's matching}
     \(G = (X \sqcup Y, E)\)  bipartite has matching saturating \(X\) iff \((\forall S \subset X)(|S| \leq |N(S)|)\)
 \end{theorem}
 \begin{proof}
-	The proof requires \refname{maximum matching} theorem.
+	The proof requires the maximum matching theorem.
 	Suppose \(G\) does not have a matching that saturates \(X\). 
 	Let \(M\) max matching that does not saturate \(X\), \(u \in X\) unsaturated. \(S = \{x \in X \text{connected to u by a M-alt path} \}\)  \(T = \{y \in Y \text{connected to u by a M-alt path} \}\) Any M-alt path from \(u\) to \( y \in T\)  can be extended uniquesly to M-alt path ending in \(S\) Therefore, there is a bijection from \(T\) to \(S \setminus u\) \(N(S) = T\) since \(T \subset N(S)\) by definition and \(N(S) \subset T\) because we can fix a \(y \in N(S)\) which is connected to an \(x\)  which is connected to \(u\).
 \end{proof} 
@@ -74,26 +78,25 @@ For \(G = (X \sqcup Y, E)\), is there a matching that saturates \(X\)?
 \end{tikzcd}\]
 \end{proof}
 
-\subsection*{Matching Duel Problem}
+\subsection{Matching Duel Problem}
 \begin{definition}[maximium]
     \label{def:maximium}
     A matching \(M \in E\) is maximum if it has the most edges of any matching
 \end{definition}
 
-Given \(G\) what is the size of it's maximum matching?
-
-There exists an upper bound for this problem
-
 \begin{definition}[vertex cover]
     \label{def:vertex cover}
     A vertex cover of \(G\)  is a subset \(Q \subset V\) s.t. every edge is incident to some vertex in \(Q\)
-    % https://q.uiver.app/?q=WzAsMTMsWzIsMSwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzUsMSwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzIsMywiXFxidWxsZXQiXSxbMSwzLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzEsMSwiXFxidWxsZXQiXSxbMyw0LCJcXGJ1bGxldCJdLFs0LDQsIlxcYnVsbGV0Il0sWzUsMywiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw2LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDgsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw5LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDEwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDExLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDEyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEyLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\end{definition}
+
+\begin{example}
+	% https://q.uiver.app/?q=WzAsMTMsWzIsMSwiYyJdLFszLDAsIlxcYnVsbGV0Il0sWzQsMCwiYyJdLFs1LDEsIlxcYnVsbGV0Il0sWzQsMiwiYyJdLFszLDIsIlxcYnVsbGV0Il0sWzIsMywiYyJdLFsxLDMsIlxcYnVsbGV0Il0sWzAsMiwiYyJdLFsxLDEsIlxcYnVsbGV0Il0sWzMsNCwiXFxidWxsZXQiXSxbNCw0LCJjIl0sWzUsMywiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw2LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDgsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw5LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDEwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDExLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDEyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEyLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
-	&&& \bullet & \bullet \\
-	& \bullet & \bullet &&& \bullet \\
-	\bullet &&& \bullet & \bullet \\
-	& \bullet & \bullet &&& \bullet \\
-	&&& \bullet & \bullet
+	&&& \bullet & c \\
+	& \bullet & c &&& \bullet \\
+	c &&& \bullet & c \\
+	& \bullet & c &&& \bullet \\
+	&&& \bullet & c
 	\arrow[no head, from=2-3, to=1-4]
 	\arrow[no head, from=1-4, to=1-5]
 	\arrow[no head, from=1-5, to=2-6]
@@ -110,11 +113,8 @@ There exists an upper bound for this problem
 	\arrow[no head, from=5-5, to=4-6]
 	\arrow[no head, from=4-6, to=3-5]
 \end{tikzcd}\]
-\end{definition}
-
-\begin{lemma}
-    Let \(Q \subseteq V\) be a vertex cover of \(G\), then matching of \(G\) has at most \(Q\) edges
-\end{lemma}
+	Where vertices labeled \(c\) are a vertex cover
+\end{example}
 
 \begin{remark}
     Matchings and vertex covers are dual problems

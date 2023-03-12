@@ -1,8 +1,5 @@
 \lecture{1}{1/26/2023}{}
 
-\section{Intro}
-Graph Theory is important
-
 \section{Fundamental Concepts}
 \begin{definition}[graph]
 	\label{def:graph}
@@ -11,11 +8,11 @@ Graph Theory is important
 
 \begin{example}[petersen graph]
 	\label{ex:petersen graph}
-	A element subset of \(\{1,2,3,4,5\}\) connected by disjointedness
+	An element subset of \(\{1,2,3,4,5\}\) connected by disjointedness
 	\newcommand{\petersengraph}{
-	\begin{tikzpicture}[every node/.style={draw,circle,thick}]
-		\graph[clockwise, radius=2cm] {subgraph C_n [n=5,name=A] };
-		\graph[clockwise, radius=1cm] {subgraph I_n [n=5,name=B] };
+	\begin{tikzpicture}[]
+		\graph[clockwise, radius=1.5cm] {subgraph C_n [n=5,name=A] };
+		\graph[clockwise, radius=.75cm] {subgraph I_n [n=5,name=B] };
 	  
 		\foreach \i [evaluate={\j=int(mod(\i+2+4,5)+1)}]% using Paul Gaborit's optimisation
 		   in {1,2,3,4,5}{
@@ -52,13 +49,13 @@ Graph Theory is important
 	\label{def:complete graph}
 	Represented \(K_n\), the graph has \(V = {1 \ldots n}\) and all possible edges
 	\[
-		|E| = \frac{n(n-1)}{2} = nCr(n, 2)
+		|E| = \frac{n(n-1)}{2} = {n \choose 2}
 	\]
 \end{definition}
 
 \begin{definition}[isomorphic]
 	\label{def:isomorphic}
-	Graphs \(G_1\) and \(G_2\) are isomorphic if there exists a bijection, \(f: v_1 \to v_2\), s.t. \(\{u, v\} \in E_1 \iff \{f(u), f(v)\}\) 
+	Graphs \(G_1 = (V_1, E_1)\) and \(G_2 = (V_2, E_2)\) are isomorphic if there exists a bijection, \(f: v_1 \to v_2\), s.t. \(\{u, v\} \in E_1 \iff \{f(u), f(v)\} \in E_2\) 
 \end{definition}
 
 \subsection{Connectivity}

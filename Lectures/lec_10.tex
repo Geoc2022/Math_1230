@@ -1,0 +1,79 @@
+\lecture{10}{2023-03-07}{}
+
+\section{Graph Coloring}
+
+\begin{example}[exam scheduling]
+	\label{ex:exam scheduling}
+	Define \(G = (V, E)\) where \(V\) are courses and \(E\) are conflicts if a student takes both courses. Here a graph coloring can help us answer how to schedule classes to limit conflicts.
+\end{example} 
+
+\begin{definition}[vertex coloring]
+	\label{def:vertex coloring}
+	Is a function of \(V \to \mathbb{N}\)  s.t. if \(\{u,v\} \in E\) then \(c(u) \neq c(v)\)  
+\end{definition}
+
+\begin{definition}[chromatic number]
+	\label{def:chromatic number}
+	Represented \(\chi (G)\), the chromatic number is the minimum number of colors needed to color a graph.
+\end{definition}  
+
+\begin{lemma}
+	\(\chi (G) \leq \Delta G + 1\) where \(\Delta G\) is the max degree of a vertex in \(G\)  
+\end{lemma} 
+
+\begin{theorem}[Brooks]
+	\label{thm:brooks}
+	\(\chi (G) = \Delta (G) + 1 \implies\) \(G\) is an odd cycle or complete
+\end{theorem} 
+
+\begin{remark}
+	\(G\) contains \(K_n\) implies \(\chi (G) \geq n\), \(n\) is called the clique number denoted \(\omega (G)\)  
+\end{remark}
+
+\subsection{Mycielski Construction}
+\begin{example}[mycielski construction]
+	\label{ex:mycielski construction}
+% https://q.uiver.app/?q=WzAsNyxbMCwxLCJ2XzEiXSxbMSwxLCJ2XzIiXSxbNCwwLCJ2XzEiXSxbNCwyLCJ2XzIiXSxbNiwwLCJ1XzEiXSxbOCwxLCJ3Il0sWzYsMiwidV8yIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDMsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw2LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsOCwiTSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	&&&& {v_1} && {u_1} \\
+	{v_1} & {v_2} &&&&&&& w \\
+	&&&& {v_2} && {u_2}
+	\arrow[no head, from=2-1, to=2-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, no head, from=1-5, to=3-5]
+	\arrow[no head, from=1-7, to=2-9]
+	\arrow[no head, from=2-9, to=3-7]
+	\arrow[no head, from=1-7, to=3-5]
+	\arrow[no head, from=1-5, to=3-7]
+	\arrow["M", shorten <=18pt, shorten >=18pt, Rightarrow, from=2-2, to=0]
+\end{tikzcd}\]
+
+With construction that if \(G = (V, E)\) where \(V = \{v_1 \ldots v_2\}\) then \(M(G)\) has vertices \(\{v_1 \ldots v_n, u_1 \ldots u_n, w\}\) and edges \(\{v_i,v_j\}, \{v_i, u_j\}, \{u_i, w\}\), for \(\{v_i, v_j\} \in E\) 
+\end{example}
+
+\begin{theorem}[Mycielski]
+	\label{thm:mycielski}
+	\begin{enumerate}
+		\item[]
+		\item \(\chi (G) = k \implies \chi (M(G)) = k + 1\)
+		\item \(G\) doesn't contain \(K_3\) \(\implies\) \(M(G)\) doesn't contain \(K_3\)   
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\emph{First statement:}
+	Given k-coloring of G, we can (\(k+1\)) color \(M(G)\), where you color \(u_i\) the same as \(v_1\) and \(w\) the \(k+1\) color.
+	We also want to show that the graph has no smaller \(k\) coloring. Suppose \(M(G)\) has a k-coloring then \(U\) uses a \(k-1\) coloring and since the \(U\) coloring can be sent to the \(V\) coloring. Therefore, \(G\) has a \(k-1\) coloring - a contradiction.
+\end{proof}
+
+\begin{remark}
+	Therefore, the clique number is not a very strong property
+\end{remark}
+
+\subsection{Coloring Extremal Problem}
+
+\begin{note}
+	Coloring graphs is an NP problem, so it might be better to try to solve extremal problems
+\end{note} 
+
+\begin{question}[coloring extremal problems]
+	Among graphs with a \(\chi (G) = k\) what is the maximal/minimal number of edges?
+\end{question}

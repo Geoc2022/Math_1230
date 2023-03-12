@@ -9,22 +9,24 @@
 
 \begin{definition}[vertex connectivity]
 	\label{def:vertex connectivity}
-	The vertex connectivity, \(\kappa (G)\) , is the min of the vertex cut
-	\(\kappa (K_n)\) is not defined 
+	Represented \(\kappa (G)\), the vertex connectivity is the minimum size of a vertex cut of \(G\). For \(K_n\), \(\kappa\) is not defined.
 \end{definition}
 
 \begin{lemma}
-	If \(G\) is not complete then \(G\)  has a vertex cut
+	If \(G\) is not complete then \(G\) has a vertex cut
 \end{lemma} 
 \begin{proof}
 	Let \(G\) not be complete, then there exist \(u, v \in V\)  s.t. \(\{u,v\} \notin E\). Then \(S = V\setminus{u, v}\) is a vertex cut
 \end{proof}
 
 \subsection{Connectivity Duel Problem}
-Let \(G = (V,E)\). for \(x, y \in V\) define \(\kappa (x,y)\) min size of vertex cut that disconnects \(x\) and \(y\)
+\begin{definition}[vertex connectivity between two vertices]
+	\label{def:vertex connectivity between two vertices}
+	Let \(G = (V,E)\), for \(x, y \in V\) define \(\kappa (x,y)\) min size of vertex cut that disconnects \(x\) and \(y\)
+\end{definition}  
 
 \begin{note}
-	We see that the points we have to remove are related to paths from \(x\) to \(y\) which have no intersection.
+	We see that the points we have to remove are related to paths from \(x\) to \(y\) which are disjoint.
 \end{note} 
 
 \begin{definition}[disjoint path]
@@ -34,15 +36,41 @@ Let \(G = (V,E)\). for \(x, y \in V\) define \(\kappa (x,y)\) min size of vertex
 
 \begin{definition}[max pairwise dijoint]
 	\label{def:max pairwise dijoint}
-	Let \(\lambda (x, y)\) be the max # of pairwise disjoint \(x,y\)-paths  
+	Let \(\lambda (x, y)\) be the max number of pairwise disjoint \(x,y\)-paths  
 \end{definition}  
 \begin{theorem}[Menger]
 	\label{thm:menger}
 	Let \(G = (V,E)\), \(x,y \in V\), \(\{x,y\} \notin E\) then 
 	\(\kappa (x,y) = \lambda (x,y)\) 
 \end{theorem}
+\begin{proof}
+	\(\kappa (x,y) \geq \lambda  (x,y)\) is easy
 
-\subsection{Max flow, min cut}
+	\(\kappa (x,y) \leq \lambda  (x,y)\):
+	
+	Let \(S\) be a minimum vertex cut. We want to show that there are \(|S|\) disjoint \((x,y)\) paths  Consider two subgroups \(G_x\) and \(G_y\) where \(G_x\) is the union of all paths from \(x\) to \(S\) (doesn't contain vertices form S) and \(G_y\) is the union of all paths from \(y\) to \(S\) (doesn't contain vertices form S). We have broken up the problem into just working with finding paths to \(S\) from \(x\) and \(y\)
+
+	To form a picture like:
+	% https://q.uiver.app/?q=WzAsNyxbNCwxLCJ5Il0sWzIsMCwic18xIl0sWzIsMSwic18yIl0sWzIsMiwic18zIl0sWzAsMSwieCJdLFsxLDAsIlxcYnVsbGV0Il0sWzMsMiwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwzLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	& \bullet & {s_1} \\
+	x && {s_2} && y \\
+	&& {s_3} & \bullet
+	\arrow[squiggly, no head, from=2-5, to=1-3]
+	\arrow[squiggly, no head, from=2-5, to=2-3]
+	\arrow[squiggly, no head, from=2-5, to=3-3]
+	\arrow[squiggly, no head, from=2-1, to=2-3]
+	\arrow[squiggly, no head, from=2-1, to=3-3]
+	\arrow[squiggly, no head, from=2-1, to=1-2]
+	\arrow[no head, from=1-2, to=2-3]
+	\arrow[squiggly, no head, from=1-2, to=1-3]
+	\arrow[no head, from=2-5, to=3-4]
+	\arrow[no head, from=3-4, to=3-3]
+	\arrow[no head, from=3-4, to=2-3]
+\end{tikzcd}\]
+\end{proof}
+
+\subsection{Max Flow, Min Cut}
 \begin{definition}[network]
 	\label{def:network}
 	Is a tuple \(G,s,t,c\) where \(G = (V, E)\) is a directed graph, \(s,t \in V\) "source" and "terminus", \(c: E \to N\) capacity. 
@@ -55,7 +83,7 @@ Let \(G = (V,E)\). for \(x, y \in V\) define \(\kappa (x,y)\) min size of vertex
 
 \begin{definition}[value]
 	\label{def:value}
-	Value of \(f\)  is \(f^{-}(s)\)
+	Value of \(f\) is \(f^{-}(s)\)
 \end{definition}  
 
 The general problem is that given a network what is the max value of a flow
@@ -69,9 +97,8 @@ The general problem is that given a network what is the max value of a flow
 	The capacity of a cut \(S, T\) is \(\sum_{e} c(e)\) where \(e\) is an edge from \(S\) to \(T\) 
 \end{definition}  
 
+\subsection{Ford-Fulkerson}
 \begin{theorem}[Ford-Fulkerson]
 	\label{thm:ford-fulkerson}
 	Max value of the flow is equal to the min capacity of a cut
 \end{theorem} 
-
-

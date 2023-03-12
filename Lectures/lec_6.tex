@@ -8,33 +8,32 @@
 	For each \(e \in M\) there is at least one vertex of \(Q\) incident to \(e\). No two \(e, e^\prime \in M\) share a vertex of \(Q\)
 \end{proof}
 
-We can use this to show that if we have a vertex cover that covers all vertices with the same number of a matching we have a maximum matching.
+\begin{note}
+	We can use this to show that if we have a vertex cover that covers all vertices with the same size as a matching we must have a maximum matching/minimum vertex cover.
+\end{note} 
 
 \begin{theorem}[König]
 	\label{thm:könig}
 	Let \(G\) bipartite, then the max size of the matching is equal to the min size of the vertex cover
 \end{theorem} 
 
-Therefore, matching and vertex covers are duel problems
+\begin{remark}
+	Therefore, matching and vertex covers are duel problems
+\end{remark}
 
-\begin{definition}[M-augmenting-path]
+\begin{definition}[m-augmenting-path]
 	\label{def:m-augmenting-path}
 	A path whose edges alternate between \(M\) and \(E\setminus M\) whose end points are unsaturated.
-
-	% picture spquare and hexagon
 \end{definition}  
-
-Local property for max matchings: If there exists an M-agumenting path then M is not maximum
 
 \begin{theorem}[maximum matching]
 	\label{thm:maximum matching}
-	If there's no M-augmenting path then \(M\)  is maximium
+	Local to Global property: If there's no M-augmenting path then \(M\) is maximum
 \end{theorem}
 \begin{proof}
-	\begin{note}
-		Suppose \(M\) is not a maximium there exists a \(M^\prime\) s.t. \(|m| < | M^\prime|\) consider the symmetric diffrence \(M \triangle M^\prime\). Here vertices have either degree \(1\) or \(2\) and the graph is aunion of even cycles and paths. 
-	\end{note}
-	Let \(M\) be a non maximal matching, \(M^\prime\) maximum matching. Consider \(M \triangle M^\prime\) By above this is a union of paths and even cycles. Since \(M\) and \(M^\prime\) share the same size in cycles then some compoent in \(M \triangle M^\prime\) has a path
+	Suppose \(M\) is not a maximum there exists an \(M^\prime\) s.t. \(|m| < | M^\prime|\) consider the symmetric difference \(M \triangle M^\prime\). Here vertices have either degree \(1\) or \(2\) and the graph is a union of even cycles and paths. 
+
+	Let \(M\) be a non-maximal matching, \(M^\prime\) maximum matching. Consider \(M \triangle M^\prime\) By above this is a union of paths and even cycles. Since \(M\) and \(M^\prime\) share the same size in cycles then some component in \(M \triangle M^\prime\) has a path
 \end{proof}
 
 

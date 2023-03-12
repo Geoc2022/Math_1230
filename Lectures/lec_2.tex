@@ -7,7 +7,7 @@
 \end{definition}
 
 \begin{note}
-	Isomorphic graphs have the same degree sequence; however, if they have the same degree sequence they are not necessarily isomorphic
+	Isomorphic graphs \(\implies\) same degree sequence; however, if they have the same degree sequence they are not necessarily isomorphic
 \end{note}
 
 \begin{definition}[graphic]
@@ -75,20 +75,48 @@
 	A simple check for it being bipartite is to check if there are no odd cycles
 \end{definition}
 
+\begin{example}
+	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJ4XzEiXSxbMSwwLCJ5XzEiXSxbMCwxLCJ4XzIiXSxbMSwxLCJ5XzIiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	{x_1} & {y_1} \\
+	{x_2} & {y_2}
+	\arrow[no head, from=1-1, to=1-2]
+	\arrow[no head, from=2-1, to=1-2]
+	\arrow[no head, from=1-1, to=2-2]
+\end{tikzcd}\]
+	Here \(G = (X \sqcup Y, E)\) where \(x_1, x_2 \in X\) and \(y_1, y_2 \in Y\) 
+\end{example}
+
+\begin{theorem}[bipartite iff no odd cycle]
+	\label{thm:bipartite iff no odd cycle}
+	A graph is bipartite \(\iff\) if it contains no odd cycle
+\end{theorem}
+\begin{proof}
+It is clear that if a graph contains an odd cycle that it is not bipartite, so we have to prove the reverse direction: if a graph does not contain an odd cycle then it is bipartite. It suffices to prove the statement for connected graphs - apply the argument to each component.
+
+
+By induction:
+
+\emph{Base Case:} When \(|E| = 0\) there are no connected vertices so there is no odd cycle and the graph must be bipartite since no vertices are connected to vertices of the same color.
+
+\emph{Inductive Step:} Assume a graph s.t. \(|E| = n - 1\) and no odd cycles is bipartite. Any connected vertices of the same color must be connected by a path of even vertices. Let us add an edge which maintains the restriction that there is no odd cycle in the graph. Suppose an edge is added between these vertices, then the graph is no longer bipartite since two vertices of the same color are connected, the addition of an edge will create an odd cycle — a contradiction. Therefore, when adding an edge to keep the graph bipartite, there must be no odd cycle.
+\end{proof}
+
+
 \subsection{Walks and Paths}
 \begin{definition}[walk]
 	\label{def:walk}
 	A walk is a sequence of vertices that are connected by edges
-	It has the property:
-	\begin{definition}[length]
-		\label{def:length}
-		The number of edges contained in the walk
-	\end{definition}
+\end{definition}
+
+\begin{definition}[length]
+	\label{def:length}
+	The number of edges contained in the walk
 \end{definition}
 
 \begin{definition}[path]
 	\label{def:path}
-	A path is a \nameref{def:walk} that has unique vertices
+	A path is a walk that has unique vertices
 \end{definition}
 
 \begin{lemma}
@@ -102,7 +130,7 @@
 \end{definition}
 \begin{definition}[cycle]
 	\label{def:cycle}
-	A cycle is a \nameref{def:closed walk} that has unique vertices
+	A cycle is a closed walk that has unique vertices
 \end{definition}
 
 \begin{lemma}[closed walk]
@@ -112,12 +140,7 @@
 \begin{proof}
 	By induction:
 	
-	\emph{Base Case:} \(k=1\) A closed walk of length 3 (\(2k+1\) ) must be a cycle
+	\emph{Base Case:} \(k=1\) A closed walk of length 3 (\(2k+1\)) must be a cycle
 
-	\emph{Inductive Step:} If all vertices in the walk are distinct we are done since it is a cycle of odd length. In the other case where there are repeated, we can split the walk on repeated vertices to get smaller walks which are proved in the previous cases
+	\emph{Inductive Step:} If all vertices in the walk are distinct, we are done since it is a cycle of odd length. In the other case where there are repeated, we can split the walk on repeated vertices to get smaller walks which are proved in the previous cases
 \end{proof}
-
-\begin{theorem}[bipartie]
-	\label{thm:bipartie}
-	A graph is bipartite iff there are no odd cycles
-\end{theorem} 

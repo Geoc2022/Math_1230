@@ -171,6 +171,8 @@
 \declaretheoremstyleline{bb_g}{blue}
 \declaretheoremstyleline{b_gg}{green}
 
+\declaretheoremstyleline{d_3}{gray}
+
 \declaretheoremstyle[
     headfont=\bfseries\sffamily\color{a_red}, bodyfont=\normalfont,
     numbered=no,
@@ -215,6 +217,8 @@
 \declaretheorem[style=thmgreenline, numbered=no, name=Remark]{remark}
 \declaretheorem[style=thmblueline, numbered=no, name=Note]{note}
 
+\declaretheorem[style=thmgrayline, numbered=no, name=Question]{question}
+
 \newtheorem*{uovt}{UOVT}
 \newtheorem*{notation}{Notation}
 \newtheorem*{previouslyseen}{As previously seen}
@@ -238,7 +242,7 @@
 
 \newcommand{\exercise}[1]{%
     \def\@exercise{#1}%
-    \subsection*{Exercise #1}
+    \subsection{Exercise #1}
 }
 
 \newcommand{\subexercise}[1]{%

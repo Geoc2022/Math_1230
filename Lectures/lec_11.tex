@@ -1,0 +1,102 @@
+\lecture{11}{2023-03-09}{}
+
+\begin{definition}[turan graphs]
+	\label{def:turan graphs}
+	Graphs of the form \(T_{n,k} = M_{\underset{k - r}{\underbrace{q \ldots q}}, \underset{r}{\underbrace{q + 1 \ldots q + 1}}}\) are the solutions to the maximal coloring problem.
+\end{definition}
+\begin{proof}
+	Pretty obvious with calculus based approach
+	% Come back to with hw solution
+\end{proof}
+
+\begin{example}
+	\(T_{6,3} = M_{3,2,1}\) 
+	% https://q.uiver.app/?q=WzAsNixbMSwyLCJcXGJ1bGxldCJdLFsxLDAsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMCwwLCJcXGJ1bGxldCJdLFs0LDEsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbMywwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwwLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDUsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDQsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	\bullet & \bullet & \bullet \\
+	&&&& \bullet \\
+	& \bullet &&& \bullet
+	\arrow[no head, from=1-1, to=3-2]
+	\arrow[no head, from=1-2, to=3-2]
+	\arrow[no head, from=1-3, to=3-2]
+	\arrow[no head, from=2-5, to=3-2]
+	\arrow[no head, from=3-5, to=3-2]
+	\arrow[no head, from=1-1, to=3-5]
+	\arrow[no head, from=1-1, to=2-5]
+	\arrow[no head, from=1-2, to=3-5]
+	\arrow[no head, from=1-2, to=2-5]
+	\arrow[no head, from=1-3, to=3-5]
+	\arrow[no head, from=1-3, to=2-5]
+\end{tikzcd}\] 
+\end{example}
+
+\subsection{Chromatic Polynomial}
+\begin{definition}[chromatic polynomial]
+	\label{def:chromatic polynomial}
+	\(\chi (G, t) =\) number of colorings of \(G\) using at most \(t\) colors
+
+	\begin{enumerate}
+		\item Degree = \(|V|\)
+		\item \(a_{n-1}\) = \(|E|\)
+		\item \(\chi (G) = \) smallest \(t\) s.t. \(\chi (G, t) \neq 0\) (\(0, \ldots \chi (G) -1\) are roots of \(\chi (G, t)\))
+		\item \(t^d\) divides \(\chi (G, t) \implies\) G has \(\geq d\) components
+		\item coefficients are log concave 
+	\end{enumerate}
+\end{definition}
+
+\begin{example}[chromatic polynomial of a complete graph]
+	\label{ex:chromatic polynomial of a complete graph}
+	\(\chi (K_n, t) = t(t-1)(t-2)\ldots (t -(n+1)) = {t \choose n}\) 
+\end{example}
+
+\begin{example}[chromatic polynomial of a tree]
+	\label{ex:chromatic polynomial of a tree}
+	Given a tree \(T\), and a subtree \(S\) with one less vertex. Inductively, \(\chi (T, t) = (t-1)\chi (S, t)\).  And the coloring does not depend on what tree it is, only the number of vertices. \(\chi (T, t) = t \cdot (t-1)^{n-1}\) 
+\end{example}
+
+\begin{theorem}
+	The chromatic polynomial is a polynomial 
+\end{theorem}
+\begin{proof}
+	\(\chi (G, t) = \chi (G \setminus e , t) = \chi (G \cdot e, t)\)
+	
+	Where \(G \cdot e\) is the contraction formula 
+\end{proof}
+
+\begin{definition}[contraction formula]
+	\label{def:contraction formula}
+% https://q.uiver.app/?q=WzAsMTMsWzAsMCwiXFxidWxsZXQiXSxbMCwxLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMiwwLCJcXGJ1bGxldCJdLFszLDAsIlxcYnVsbGV0Il0sWzMsMSwiXFxidWxsZXQiXSxbNCwwLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzYsMCwiXFxidWxsZXQiXSxbNiwxLCJcXGJ1bGxldCJdLFs3LDAsIlxcYnVsbGV0Il0sWzgsMCwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw3LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwyLHsiY3VydmUiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNyw4LCIiLDIseyJjdXJ2ZSI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSwxMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCwxMSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs5LDExLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDEyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE4LDE5LCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzIwLDI0LCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+	\bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+	\bullet & \bullet && \bullet &&& \bullet
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=2-1, to=2-2]
+	\arrow[dashed, no head, from=2-2, to=1-2]
+	\arrow[no head, from=1-2, to=1-1]
+	\arrow[no head, from=1-2, to=1-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, no head, from=1-3, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, no head, from=1-4, to=2-4]
+	\arrow[""{name=2, anchor=center, inner sep=0}, no head, from=2-4, to=1-5]
+	\arrow[no head, from=1-4, to=1-5]
+	\arrow[curve={height=6pt}, no head, from=1-5, to=1-6]
+	\arrow[curve={height=-6pt}, no head, from=1-5, to=1-6]
+	\arrow[""{name=3, anchor=center, inner sep=0}, no head, from=1-7, to=2-7]
+	\arrow[no head, from=2-7, to=1-8]
+	\arrow[no head, from=1-7, to=1-8]
+	\arrow[no head, from=1-8, to=1-9]
+	\arrow[shorten <=10pt, shorten >=10pt, Rightarrow, from=0, to=1]
+	\arrow[shorten <=16pt, shorten >=16pt, Rightarrow, from=2, to=3]
+\end{tikzcd}\]
+\end{definition}  
+
+\begin{example}[sudoku]
+	\label{ex:sudoku}
+	We form a graph where vertices are squares on the board and vertices are connected if they are in the same row column or square on the grid. Now this is made into a coloring problem. 
+
+	% create question enviroment 
+	How many \(9 \times 9\) Sudoku puzzles?
+	
+	Each graph has \(81\) vertices with degree \(20\), so there are \(810\) edges.   
+\end{example} 
+
+

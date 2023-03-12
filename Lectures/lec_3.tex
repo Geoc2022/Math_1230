@@ -3,14 +3,13 @@
 \begin{remark}
 	Algorithmic Bipartite Testing
 	\begin{itemize}
-		\item Brute force: \(2^{\lVert V \rVert} \cdot \lVert E \rVert \) 
-		\item Proof Algorithm: where we color the vertices and check the edges \(\lVert V \rVert + \lVert E \rVert \) 
+		\item Brute force: \(2^{| V |} \cdot | E |\) 
+		\item Proof Algorithm: where we color the vertices and check the edges \(| V | + | E | \) 
 	\end{itemize}
 \end{remark}
 
-\begin{remark}
-	Local to Global Results
-
+\begin{remark}[local to global results]
+	\label{remark:local to global results}
 	Global properties always lead to local results (ex. bipartite implies no odd cycles). In West it is called "TONCAS"
 \end{remark}
 
@@ -21,14 +20,33 @@
 	A closed walk that visits each edge of a graph exactly once
 \end{definition}
 
-\begin{definition}[eulerian graph]
-	\label{def:eulerian graph}
-	A graph with a \nameref{def:euler tour} is Eulerian.
+\begin{definition}[eulerian]
+	\label{def:eulerian}
+	A graph with an euler tour is Eulerian.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}[eulerian local property]
+	\label{prop:eulerian local property}
 	A graph is Eulerian iff every vertex has even degree.
 \end{proposition}
+
+\begin{example}[seven bridges of königsberg]
+	\label{ex:seven bridges of königsberg}
+	% https://q.uiver.app/?q=WzAsNCxbMCwxLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMSwyLCJcXGJ1bGxldCJdLFswLDFdLFswLDIsIiIsMix7ImN1cnZlIjoxfV0sWzIsMV0sWzEsM10sWzMsMCwiIiwyLHsiY3VydmUiOi0xfV0sWzIsMCwiIiwyLHsiY3VydmUiOjF9XSxbMCwzLCIiLDIseyJjdXJ2ZSI6LTF9XV0=
+\[\begin{tikzcd}
+	& \bullet \\
+	\bullet && \bullet \\
+	& \bullet
+	\arrow[from=2-1, to=2-3]
+	\arrow[curve={height=6pt}, from=2-1, to=1-2]
+	\arrow[from=1-2, to=2-3]
+	\arrow[from=2-3, to=3-2]
+	\arrow[curve={height=-6pt}, from=3-2, to=2-1]
+	\arrow[curve={height=6pt}, from=1-2, to=2-1]
+	\arrow[curve={height=-6pt}, from=2-1, to=3-2]
+\end{tikzcd}\]
+	Using a graph to model the seven bridges of Königsberg shows that an euler tour is not possible.
+\end{example} 
 
 \begin{note}
 	This is another example of local and global properties where the parity of the degree is the local property and Eulerian is the global property
@@ -38,17 +56,36 @@
 \begin{definition}[tree]
 	\label{def:tree}
 	A tree is a \nameref{def:connected} and \hyperref[def:cycle]{acyclic} graph
-	\begin{definition}[leaf]
-		\label{def:leaf}
-		A node of degree \(1\) 
-	\end{definition}
+\end{definition}
+
+\begin{example}
+	% https://q.uiver.app/?q=WzAsOSxbMCwxLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFszLDEsIlxcYnVsbGV0Il0sWzMsMiwiXFxidWxsZXQiXSxbNCwwLCJcXGJ1bGxldCJdLFs0LDEsIlxcYnVsbGV0Il0sWzUsMSwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	&& \bullet && \bullet \\
+	\bullet & \bullet && \bullet & \bullet & \bullet \\
+	&& \bullet & \bullet
+	\arrow[no head, from=2-1, to=2-2]
+	\arrow[no head, from=2-2, to=1-3]
+	\arrow[no head, from=2-2, to=3-3]
+	\arrow[no head, from=3-3, to=2-4]
+	\arrow[no head, from=3-3, to=3-4]
+	\arrow[no head, from=2-4, to=1-5]
+	\arrow[no head, from=2-4, to=2-5]
+	\arrow[no head, from=2-5, to=2-6]
+\end{tikzcd}\]
+\end{example}
+
+\begin{definition}[leaf]
+	\label{def:leaf}
+	A node of degree \(1\) 
 \end{definition}
 
 \begin{lemma}
-	Any \nameref{def:connected} subgraph of a \nameref{def:tree} is a \nameref{def:tree} 
+	Any connected subgraph of a tree is a tree 
 \end{lemma}
 \begin{proof}
-	By contradiction: \\
+	By contradiction:
+
 	Assume that the connected subgraph is not a tree, then the subgraph has a cycle, therefore the graph has a cycle, but trees are acyclic. Therefore, contradiction.
 \end{proof}
 
@@ -65,6 +102,7 @@
 	Therefore, the \(n+1\) tree has \(1\) more edge than an \(n\) tree.
 \end{proof}
 
+\subsection{Spanning Trees}
 \begin{definition}[spanning tree]
 	\label{def:spanning tree}
 	A spanning tree (ST) is a subgraph of a \nameref{def:connected} that is a \nameref{def:tree} that contains all vertices of the original graph

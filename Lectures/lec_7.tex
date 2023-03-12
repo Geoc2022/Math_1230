@@ -1,7 +1,7 @@
 \lecture{7}{2023-02-23}{}
 
-\begin{definition}[matching — stable]
-    \label{def:matching — stable}
+\begin{definition}[stable matching]
+    \label{def:stable matching}
     A matching is stable if 
     % https://q.uiver.app/?q=WzAsNCxbMCwwLCJ4Il0sWzEsMSwieVxccHJpbWUiXSxbMSwwLCJ4XFxwcmltZSJdLFswLDEsInkiXSxbMCwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 \[\begin{tikzcd}
@@ -20,46 +20,21 @@
 \end{theorem} 
 \begin{proof}
     We preform an algorithm to construct a stable matching:
-    \begin{enumerate}
-        \item[Round 1] 
-        Each \(x \in X\) proposes to top choice
-        
-        Each \(y \in Y\) accepts the highest proposal
-        \item[Subsequent rounds] Each unmatched \(x\) proposes to top choice not yet proposed to. Each \(y\) accepts the best proposal possible breaking an engagement
-
-        \item[Repeat]
-    \end{enumerate}
-    
+	\begin{enumerate}[align=left]
+		\item[\textbf{Round 1:}] 
+		\begin{enumerate}[align=left]
+			\item[] 
+			\item[] Each \(x \in X\) proposes to top choice
+			\item[] Each \(x \in X\) proposes to top choice
+		\end{enumerate}
+		\item[\textbf{Subsequent Rounds:}] Each unmatched \(x\) proposes to top choice not yet proposed to. Each \(y\) accepts the best proposal possible breaking an engagement
+		\item[\textbf{Repeat}]
+	\end{enumerate}
+		
     \emph{Features}
-    \begin{enumerate}
+    \begin{enumerate}[align=left]
         \item Algorithm stops after \(<|E|\) rounds
         \item End matching is stable
-        \item Proposers get the best match among all stable matchings. Proposees get worse 
+        \item Proposers get the best match among all stable matchings. Proposed get worse.
     \end{enumerate}
 \end{proof}
-
-\begin{example}
-    % https://q.uiver.app/?q=WzAsMTIsWzAsMCwiYSJdLFswLDEsImQiXSxbMSwxLCJlIl0sWzEsMCwiYiJdLFsyLDEsImYiXSxbMiwwLCJjIl0sWzMsMCwiXFxidWxsZXQiXSxbMywxLCJcXGJ1bGxldCJdLFs0LDEsIlxcYnVsbGV0Il0sWzQsMCwiXFxidWxsZXQiXSxbNSwxLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzEsMCwiMywxIiwzLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDEsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywyLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDgsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSw3LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksOCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs5LDEwLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDgsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMTAsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDEwLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-\[\begin{tikzcd}
-	a & b & c & \bullet & \bullet & \bullet \\
-	d & e & f & \bullet & \bullet & \bullet
-	\arrow["{3,1}"{marking}, no head, from=2-1, to=1-1]
-	\arrow[no head, from=1-1, to=2-2]
-	\arrow[no head, from=1-2, to=2-3]
-	\arrow[no head, from=1-1, to=2-3]
-	\arrow[no head, from=1-2, to=2-1]
-	\arrow[no head, from=1-2, to=2-2]
-	\arrow[no head, from=1-3, to=2-1]
-	\arrow[no head, from=1-3, to=2-2]
-	\arrow[no head, from=1-3, to=2-3]
-	\arrow[no head, from=1-4, to=2-4]
-	\arrow[squiggly, no head, from=1-4, to=2-5]
-	\arrow[no head, from=1-5, to=2-4]
-	\arrow[no head, from=1-5, to=2-5]
-	\arrow[squiggly, no head, from=1-5, to=2-6]
-	\arrow[no head, from=1-6, to=2-5]
-	\arrow[no head, from=1-6, to=2-6]
-	\arrow[squiggly, no head, from=1-6, to=2-4]
-	\arrow[no head, from=1-4, to=2-6]
-\end{tikzcd}\]
-\end{example}
