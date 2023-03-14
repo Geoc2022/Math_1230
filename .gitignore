@@ -2,3 +2,26 @@
 /.tmp.drivedownload
 /.tmp.driveupload
 /.vscode
+
+main.aux
+main.fdb_latexmk
+main.fls
+main.loe
+main.log
+main.out
+main.synctex.gz
+main.toc
+
+1230 HW/.DS_Store
+1230 HW/HW6/.DS_Store
+1230 HW/HW5/.DS_Store
+
+1230 HW/HW*/123-hw*.aux
+1230 HW/HW*/123-hw*.fdb_latexmk
+1230 HW/HW*/123-hw*.fls
+1230 HW/HW*/123-hw*.loe
+1230 HW/HW*/123-hw*.log
+1230 HW/HW*/123-hw*.out
+1230 HW/HW*/123-hw*.synctex.gz
+1230 HW/HW*/123-hw*.toc
+1230 HW/HW7/123-hw7.tex
