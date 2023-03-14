@@ -1,0 +1,92 @@
+\lecture{12}{2023-03-14}{}
+
+\begin{definition}[independent]
+    \label{def:independent}
+    A subset \(I \subseteq V\) is independent if there are no edges \(\{u,v\}\) where \(u,v \in I\) 
+\end{definition}  
+
+\section{Planar Graphs}
+\begin{definition}[planer]
+    \label{def:planer}
+    A graph is planar is it can be drawn on the plane with no edges crossing.
+\end{definition}
+\begin{example}
+    \(K_4\)
+    % https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbMCwyLCJcXGJ1bGxldCJdLFs1LDEsIlxcYnVsbGV0Il0sWzUsMiwiXFxidWxsZXQiXSxbNCwwLCJcXGJ1bGxldCJdLFs2LDAsIlxcYnVsbGV0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwzLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNyw1LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	\bullet && \bullet && \bullet && \bullet \\
+	&&&&& \bullet \\
+	\bullet && \bullet &&& \bullet
+	\arrow[no head, from=1-1, to=1-3]
+	\arrow[no head, from=1-3, to=3-3]
+	\arrow[no head, from=3-3, to=3-1]
+	\arrow[no head, from=3-1, to=1-1]
+	\arrow[no head, from=1-1, to=3-3]
+	\arrow[no head, from=1-3, to=3-1]
+	\arrow[no head, from=2-6, to=3-6]
+	\arrow[no head, from=3-6, to=1-5]
+	\arrow[no head, from=1-5, to=1-7]
+	\arrow[no head, from=1-7, to=2-6]
+	\arrow[no head, from=2-6, to=1-5]
+	\arrow[no head, from=1-7, to=3-6]
+\end{tikzcd}\] 
+\end{example}
+
+\subsection{Theorems on the Real Plane}
+
+\begin{theorem}[Jordan Curve]
+    \label{thm:jordan curve}
+    Any circle in \(\mathbb{R}^2\) splits \(\mathbb{R}^2\) into two regions, one unbounded and one unbounded
+\end{theorem} 
+
+\begin{theorem}[Euler's Formula]
+    \label{thm:euler's formula}
+    Let \(G = (V, E)\) be embedded in \(\mathbb{R}^2\) and connected, \(|F|\) be the number of regions of \(\mathbb{R}^2 \setminus G\), then the \(|V| - |E| + |F| = 2\)
+\end{theorem} 
+\begin{proof}
+    By induction:
+    \begin{enumerate}[align=left]
+        \item[\emph{Base Case:}] (\(|E| - |V| = -1\))
+    
+        Here \(G\) is a tree, so \(|V| - |E| = 1\) and \(|F| = 1\); therefore \(|V| - |E| + |F| = 2\)   
+        \item[\emph{Inductive Step:}]  
+    
+        If \(|E| - |V| \geq -1\) then \(G\) has a cycle, \(C\). Then by fixing an edge \(e\) on \(C\) we can consider
+        \begin{eqnarray*}
+            |V\setminus e| - |E \setminus e| + |F \setminus e| \\
+            |V| - (|E| + 1) + (|F| + 1) \\
+            |V| - |E| - 1 + |F| + 1 \\
+            |V| - |E| + |F|
+        \end{eqnarray*}
+        and by induction we know \(|V\setminus e| - |E \setminus e| + |F \setminus e| = 2\), so \(|V| - |E| + |F| = 2\) 
+    \end{enumerate} 
+\end{proof}
+
+\begin{corollary}
+    \(K_5\) is not planar
+\end{corollary}
+\begin{proof}
+    By contradiction:
+    
+    Assume there exists an embedding \(K_5\) in \(\mathbb{R}^2\) then by Euler's Formula 
+    \begin{eqnarray*}
+        |F| = 2 - |V| + |E| \\
+        |F| = 2 - 5 + 10 \\
+        7 = 2 - 5 + 10 \\
+    \end{eqnarray*}
+
+    But each edge has at most \(2\) faces and each face has \(\geq 3\) sides therefore \(2 |E| \geq 3 |F|\). However, \(2 \cdot 10 \geq 21\); therefore \(K_5\) is not planer 
+\end{proof}
+
+\begin{note}
+    Similar proof can be done for showing \(K_{3,3}\) is not planar
+\end{note}
+
+\begin{theorem}[Kuratowski]
+    \label{thm:kuratowski}
+    \(G\) is planar \(\iff\) \(G\) does not contain a subdivision of \(K_5\) or \(K_{3,3}\) 
+\end{theorem}
+
+\begin{remark}
+    Another local to global property
+\end{remark}

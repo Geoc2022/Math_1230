@@ -60,7 +60,9 @@
 \begin{proof}
 	\(\chi (G, t) = \chi (G \setminus e , t) = \chi (G \cdot e, t)\)
 	
-	Where \(G \cdot e\) is the contraction formula 
+	Where \(G \cdot e\) is the contraction formula
+
+	Write \(V = I_1, \sqcup \ldots \sqcup I_r\) then \(\chi (G, t) = \sum_{r = 1}^{|V|} a_r(G) \cdot \chi (K_r, t)\) where \(a_r(G)\) are the number of ways to write \(V = I_1 \sqcup \ldots \sqcup I_r\)	
 \end{proof}
 
 \begin{definition}[contraction formula]
@@ -87,7 +89,13 @@
 	\arrow[shorten <=10pt, shorten >=10pt, Rightarrow, from=0, to=1]
 	\arrow[shorten <=16pt, shorten >=16pt, Rightarrow, from=2, to=3]
 \end{tikzcd}\]
-\end{definition}  
+\end{definition}
+\begin{proof}
+	\[
+		\chi (G, t) = \chi (G \setminus e , t) = \chi (G \cdot e, t)
+	\]
+	Any \(t\) coloring gives a \(t\) coloring of \(G \setminus e\). A coloring os \(G\setminus e\) gives a coloring of \(G\) when the edpoints \(e\) are independent. Colorings of \(G\setminus e\) corapsond to colorings of \(G \cdot e\)
+\end{proof}
 
 \begin{example}[sudoku]
 	\label{ex:sudoku}
