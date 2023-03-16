@@ -2,7 +2,12 @@
 
 \begin{definition}[turan graphs]
 	\label{def:turan graphs}
-	Graphs of the form \(T_{n,k} = M_{\underset{k - r}{\underbrace{q \ldots q}}, \underset{r}{\underbrace{q + 1 \ldots q + 1}}}\) are the solutions to the maximal coloring problem.
+	Graphs of the form 
+	\[
+		T_{n,k} = M_{\underset{k - r}{\underbrace{q \ldots q}}, \underset{r}{\underbrace{q + 1 \ldots q + 1}}}
+	\] 
+	where \(n = qk + r\) s.t. \(r < k\)  
+	are the solutions to the maximal coloring problem.
 \end{definition}
 \begin{proof}
 	Pretty obvious with calculus based approach
@@ -58,7 +63,7 @@
 	The chromatic polynomial is a polynomial 
 \end{theorem}
 \begin{proof}
-	\(\chi (G, t) = \chi (G \setminus e , t) = \chi (G \cdot e, t)\)
+	\(\chi (G, t) = \chi (G \setminus e , t) - \chi (G \cdot e, t)\)
 	
 	Where \(G \cdot e\) is the contraction formula
 
@@ -92,7 +97,7 @@
 \end{definition}
 \begin{proof}
 	\[
-		\chi (G, t) = \chi (G \setminus e , t) = \chi (G \cdot e, t)
+		\chi (G, t) = \chi (G \setminus e , t) - \chi (G \cdot e, t)
 	\]
 	Any \(t\) coloring gives a \(t\) coloring of \(G \setminus e\). A coloring os \(G\setminus e\) gives a coloring of \(G\) when the edpoints \(e\) are independent. Colorings of \(G\setminus e\) corapsond to colorings of \(G \cdot e\)
 \end{proof}
