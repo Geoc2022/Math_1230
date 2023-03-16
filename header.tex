@@ -44,7 +44,18 @@
 \usepackage{stmaryrd} % for \lightning
 \newcommand\contra{\scalebox{1.1}{$\lightning$}}
 \let\phi\varphi
-
+\newcommand{\petersengraph}{
+	\begin{tikzpicture}[]
+		\graph[clockwise, radius=1.5cm] {subgraph C_n [n=5,name=A] };
+		\graph[clockwise, radius=.75cm] {subgraph I_n [n=5,name=B] };
+	  
+		\foreach \i [evaluate={\j=int(mod(\i+2+4,5)+1)}]% using Paul Gaborit's optimisation
+		   in {1,2,3,4,5}{
+		  \draw (A \i) -- (B \i);
+		  \draw (B \j) -- (B \i);
+		}
+	\end{tikzpicture}
+	}
 
 % correct
 \definecolor{correct}{HTML}{009900}
@@ -303,9 +314,9 @@
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
     \import{./figures/}{#1.pdf_tex}
-}
-
-% %http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
+    }
+    
+%http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
 \pdfsuppresswarningpagegroup=1
 
 \setcounter{section}{-1}

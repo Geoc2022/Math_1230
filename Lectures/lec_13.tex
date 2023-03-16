@@ -1,0 +1,98 @@
+\lecture{13}{2023-03-16}{}
+
+ \subsection{Linear Planer Embeddings}
+ \begin{note}
+    Our definition of planer does not require straight lines
+ \end{note}
+
+\begin{question}
+    \(G\) is planar \(\implies\) it can be drawn using straight lines
+\end{question}
+
+\begin{definition}[linear embedding]
+    \label{def:linear embedding}
+    An embedding drawn with only straight lines
+\end{definition}
+
+\begin{theorem}[Fary]
+    \label{thm:fary}
+    Every planar graph has a linear embedding    
+\end{theorem}
+\begin{proof}
+    By induction:
+    \begin{enumerate}[align=left]
+        \item[\emph{Base Case:}] (\(|V| =\))
+    
+        
+        \item[\emph{Inductive Step:}]  
+    
+        
+    \end{enumerate} 
+\end{proof}
+
+\begin{proposition}
+    A planar graph has at least four vertices of degree \(\leq 5\).
+\end{proposition}
+\begin{proof}
+    Suppose the degree of all the vertices are \(\geq 6\) then \(2|E| = \sum \deg(v) \geq 6|V|\)  but this contradicts \(|E| \leq 3|V| - 6\) 
+\end{proof}
+
+
+\subsection{Maximal Planar Graphs}
+\begin{observe}
+    For Fary's theorem adding edges makes it harder to linearly embedded
+\end{observe}
+
+
+\begin{definition}[maximal planar]
+    \label{def:maximal planar}
+    \(G\) is maximal planar if adding any edge to \(G\) gives a nonplanar graph
+\end{definition}  
+
+\begin{proposition}[max planar properties]
+    \label{prop:max planar properties}
+    Fix \(G = (V, E)\)
+    The following are equivalent:
+    \begin{enumerate}
+        \item \(G\) is maximal planar
+        \item \(|E| = 3|V| - 6\) 
+        \item Complementary regions of \(G \hookrightarrow \mathbb{R}^2\) is a triangle 
+    \end{enumerate} 
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}[align=left]
+        \item[]
+        \item[\(2 \iff 3\)]:
+        We saw that \(3|F| \leq |E|\) and with Euler we can see that \(|E| \leq 3|V| - 6\). We have equality of the second statement when the first statement has equality. Therefore, all the faces are triangles if and only if \(|E| \leq 3|V| - 6\).
+        \item[\(1 \implies 3\)]:
+        \(G \hookrightarrow \mathbb{R}^2\) where some region has \(\geq 4\) sides. Then since we can add an edge in this case (ex. diagonal across square).
+        \item[\(3 \implies 1\)]:
+        \(G\) is not max planer then we can add edge \(e\) s.t. \(G^\prime = G \cup e\) is a;so planar. Then we have an embedding \(G^\prime \hookrightarrow \mathbb{R}^2\) where we can remove \(e\) and see that we get an embedding of \(G\) with a region that's not a triangle.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}[complementary region as traingles]
+    \label{ex:complementary region as traingles}
+% https://q.uiver.app/?q=WzAsMTAsWzEsMCwiXFxidWxsZXQiXSxbMCwyLCJcXGJ1bGxldCJdLFswLDMsIlxcYnVsbGV0Il0sWzIsMywiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbNCwzLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzYsMiwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDgsIiIsMSx7ImN1cnZlIjotNSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw3LCIiLDEseyJjdXJ2ZSI6NSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	& \bullet &&&& \bullet \\
+	\\
+	\bullet && \bullet && \bullet && \bullet \\
+	\bullet && \bullet && \bullet && \bullet
+	\arrow[no head, from=1-2, to=3-1]
+	\arrow[no head, from=3-1, to=4-1]
+	\arrow[no head, from=4-1, to=4-3]
+	\arrow[no head, from=4-3, to=3-3]
+	\arrow[no head, from=3-3, to=1-2]
+	\arrow[no head, from=1-6, to=3-5]
+	\arrow[no head, from=3-5, to=4-5]
+	\arrow[no head, from=4-5, to=4-7]
+	\arrow[no head, from=4-7, to=3-7]
+	\arrow[no head, from=3-7, to=1-6]
+	\arrow[no head, from=4-5, to=3-7]
+	\arrow[curve={height=-30pt}, no head, from=1-6, to=4-7]
+	\arrow[no head, from=3-5, to=3-7]
+	\arrow[curve={height=30pt}, no head, from=1-6, to=4-5]
+\end{tikzcd}\]
+    Here the left graph is not maximal planar and does not have all triangle complementary regions (basically faces) while the right one does, including the outer region
+\end{example} 
