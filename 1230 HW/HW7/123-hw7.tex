@@ -203,9 +203,9 @@ Let $G=M_{n_1,\ldots,n_k}$ be a complete $k$-partite graph with $n=n_1+\cdots+n_
 \end{problem}
 
 \begin{proof}
+Continuing the discussion from class, we know that the number of edges of a graph \(M_{n_1 \cdots n_k}\) is the sum of all pairwise products of the size of the coloring groups. And by the symmetry of pairwise products, this implies that the maximum occurs when all groups have the same size. However, since there might be cases where \(r \nmid n\) then each group must size of at most 1 more than any of the other groups, since if it contains 2 more vertices, one of those could be allocated to another group such that all groups are closer to being the same size.
 
 \end{proof}
-
 
 \pagebreak
 
@@ -216,7 +216,9 @@ Given a set of lines in the plane with no three meeting at a point, form a graph
 \end{problem}
 
 \begin{proof}
+Cases with perpendicular lines can be slanted for the following proof since altering the left/right position of the vertices does not matter.
 
+Since no more than 2 lines intersect to create a point there can be at most 2 neighboring points to the left of any given point. Therefore, we can apply a greedy coloring starting form the left and moving to the right, coloring the 2 neighboring points to the left and then coloring the right point with the 3rd color if the 2 neighboring points are different colors. 
 \end{proof}
 
 
@@ -264,7 +266,7 @@ Prove that $\chi(G)=\omega(G)$ when the complement $\bar G$ is bipartite. \footn
 \end{problem}
 
 \begin{proof}
-
+Since the clique number \(\omega (G)\) is the maximum size of a \(K_n\) within \(G\), \(\omega (G)\) must be the size of the largest independent set in \(\bar{G}\) since the \(K_n\) within \(G\) corresponds to an independent set in \(\bar{G}\). \(\chi(G)\) is the number of independent sets in \(G\) therefore it must also be the number of \(K_n\) that form \(\bar{G}\); and since \(\bar{G}\) is bipartite, the number of \(K_n\) that form \(\bar{G}\) is equal to the minimum size of the edge cover. And we know from West that the minimum size of the edge cover and the size of the largest independent set are equal; therefore, \(\omega (G) = \chi(G)\)
 \end{proof}
 
 \pagebreak
@@ -274,7 +276,48 @@ Let $G=(V,E)$ be the unit distance graph in the plane: $V=\mathbb R^2$, and two 
 \end{problem}
 
 \begin{proof}
-
+	\begin{enumerate}
+		\item[]
+		\item[(a)]
+			\[
+			\includegraphics[scale=5]{HexagonGrid.png}
+			\]
+			Here we have created a hexagonal tiling using \(7\) colors. If we make the size of the hexagons such that the length from one vertex to the opposite vertex is less than one unit, every step from a point on the hexagon must be outside the original hexagon and onto a different color.
+			\[
+			\includegraphics[scale=.5]{HexagonGrid2.png}
+			\medspace \medspace \medspace \medspace
+			\includegraphics[scale=.5]{HexagonGrid3.png}
+			\]
+			Moreover, if we make the size of the hexagons such that the length from one vertex of a hexagon to the nearest vertex of a same colored hexagon greater than one unit, every step from a point on the hexagon must never touch a hexagon of the same color.
+		\item[(b)]
+		To show this has to be done with 3 or more colors we can show this cannot happen with just 2.
+		Pretend this is an equalratical triangle representing the walk with each edge of length one:
+		% https://q.uiver.app/?q=WzAsMyxbMSwwLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	& \bullet \\
+	\\
+	\bullet && \bullet
+	\arrow[no head, from=1-2, to=3-1]
+	\arrow[no head, from=3-1, to=3-3]
+	\arrow[no head, from=3-3, to=1-2]
+\end{tikzcd}\]
+		Then let's color the starting vertex \(r\), and then walk to the top vertex which we color \(b\), then at the third vertex, since we can reach it from either vertex of the  equalratical triangle, must be colored a third color. Therefore, using two colors is not possible, so it must be done with more than 2 colors i.e. 3 or more.
+		% https://q.uiver.app/?q=WzAsOSxbMSwwLCJcXGJ1bGxldCJdLFswLDIsInIiXSxbMiwyLCJcXGJ1bGxldCJdLFs0LDIsInIiXSxbNSwwLCJiIl0sWzYsMiwiXFxidWxsZXQiXSxbOCwyLCJyIl0sWzksMCwiYiJdLFsxMCwyLCJcXFJpZ2h0YXJyb3dcXExlZnRhcnJvdyJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNyw4LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzgsNiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	& \bullet &&&& b &&&& b \\
+	\\
+	r && \bullet && r && \bullet && r && \Rightarrow\Leftarrow
+	\arrow[no head, from=1-2, to=3-1]
+	\arrow[no head, from=3-1, to=3-3]
+	\arrow[no head, from=3-3, to=1-2]
+	\arrow[no head, from=3-5, to=1-6]
+	\arrow[no head, from=1-6, to=3-7]
+	\arrow[no head, from=3-7, to=3-5]
+	\arrow[no head, from=3-9, to=1-10]
+	\arrow[no head, from=1-10, to=3-11]
+	\arrow[no head, from=3-11, to=3-9]
+\end{tikzcd}\]
+	\end{enumerate}
 \end{proof}
-
+	
 \end{document}
