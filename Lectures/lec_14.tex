@@ -1,0 +1,104 @@
+\lecture{14}{2023-03-21}{}
+
+\subsection{Art Gallery Problem}
+\begin{question}
+    Given a room, how many light sources can fill the entire space?
+    % https://q.uiver.app/?q=WzAsMTAsWzAsMiwiXFxidWxsZXQiXSxbMCw1LCJcXGJ1bGxldCJdLFsyLDUsIlxcYnVsbGV0Il0sWzMsMywiXFxidWxsZXQiXSxbNSwzLCJcXGJ1bGxldCJdLFs1LDEsIlxcYnVsbGV0Il0sWzQsMCwiXFxidWxsZXQiXSxbNCwxLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSwwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	&&&& \bullet \\
+	&& \bullet && \bullet & \bullet \\
+	\bullet && \bullet \\
+	&&& \bullet && \bullet \\
+	\\
+	\bullet && \bullet
+	\arrow[no head, from=3-1, to=6-1]
+	\arrow[no head, from=6-1, to=6-3]
+	\arrow[no head, from=6-3, to=4-4]
+	\arrow[no head, from=4-4, to=4-6]
+	\arrow[no head, from=4-6, to=2-6]
+	\arrow[no head, from=2-6, to=1-5]
+	\arrow[no head, from=1-5, to=2-5]
+	\arrow[no head, from=2-5, to=2-3]
+	\arrow[no head, from=2-3, to=3-3]
+	\arrow[no head, from=3-3, to=3-1]
+\end{tikzcd}\]
+\end{question}
+\begin{theorem}[Art Gallery Thm]
+    \label{thm:art gallery thm}
+    You only need \(\big\lfloor \frac{n}{3} \big\rfloor\) for a polygon with \(n\) sides
+\end{theorem}
+\begin{proof}[5 sided case]
+    Given a \(5\) sided polygon, consider the convex hull of the vertices. 
+    
+    The cases for the convex hull can be either \(5,4,3\). For these cases, if you split the polygon into traingles there exists a vertex where it is incident to every triangle. And the solution is that you put the source near this vertex.
+
+% https://q.uiver.app/?q=WzAsMTUsWzYsMCwiXFxidWxsZXQiXSxbNiw0LCJcXGJ1bGxldCJdLFs4LDIsIioiXSxbMTAsNCwiXFxidWxsZXQiXSxbMTAsMCwiXFxidWxsZXQiXSxbMiwwLCIqIl0sWzAsMiwiXFxidWxsZXQiXSxbMCw0LCJcXGJ1bGxldCJdLFs0LDQsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbMTQsMCwiKiJdLFsxMiw0LCJcXGJ1bGxldCJdLFsxMywzLCJcXGJ1bGxldCJdLFsxNSwzLCJcXGJ1bGxldCJdLFsxNiw0LCJcXGJ1bGxldCJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNyw4LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzgsOSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs5LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsMTEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMTIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMTMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTMsMTQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTQsMTAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMSwxNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw3LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDgsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCwxMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsMTMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\adjustbox{scale=.60,center}{
+\begin{tikzcd}[scale=0.50]
+	&& {*} &&&& \bullet &&&& \bullet &&&& {*} \\
+	\\
+	\bullet &&&& \bullet &&&& {*} \\
+	&&&&&&&&&&&&& \bullet && \bullet \\
+	\bullet &&&& \bullet && \bullet &&&& \bullet && \bullet &&&& \bullet
+	\arrow[no head, from=1-7, to=5-7]
+	\arrow[no head, from=5-7, to=3-9]
+	\arrow[no head, from=3-9, to=5-11]
+	\arrow[no head, from=5-11, to=1-11]
+	\arrow[no head, from=1-11, to=1-7]
+	\arrow[no head, from=1-3, to=3-1]
+	\arrow[no head, from=3-1, to=5-1]
+	\arrow[no head, from=5-1, to=5-5]
+	\arrow[no head, from=5-5, to=3-5]
+	\arrow[no head, from=3-5, to=1-3]
+	\arrow[no head, from=1-15, to=5-13]
+	\arrow[no head, from=5-13, to=4-14]
+	\arrow[no head, from=4-14, to=4-16]
+	\arrow[no head, from=4-16, to=5-17]
+	\arrow[no head, from=5-17, to=1-15]
+	\arrow[dashed, no head, from=5-7, to=5-11]
+	\arrow[dashed, no head, from=5-13, to=5-17]
+	\arrow[dotted, no head, from=1-3, to=5-1]
+	\arrow[dotted, no head, from=1-3, to=5-5]
+	\arrow[dotted, no head, from=1-7, to=3-9]
+	\arrow[dotted, no head, from=1-11, to=3-9]
+	\arrow[dotted, no head, from=1-15, to=4-14]
+	\arrow[dotted, no head, from=1-15, to=4-16]
+\end{tikzcd}}\]
+\end{proof}
+
+\subsection{Map Coloring}
+\begin{question}
+    Given a map how many colors are needed to color all the regions s.t. adjacent regions have different colors
+\end{question}
+
+\begin{observe}
+    The dual graph of them map is planar since we can move the vertices to the border, the borders do not intersect, and by Fary's.
+\end{observe}
+
+\begin{theorem}[4 Color]
+    \label{thm:4 color}
+    Every planar graph is \(4\) colorable
+\end{theorem} 
+
+\begin{theorem}[6 Color]
+    \label{thm:6 Color}
+    Every planar graph is \(6\) colorable
+\end{theorem}
+\begin{proof}
+    A planar graph has a vertex of degree \(\leq 5\) by Euler's Formula. By induction, \(6\) color \(G\setminus v\). If we remove \(v\) we get another planer graph that has a vertex of degree \(\leq 5\) By applying this repeatedly we get an ordering \(v_1 \cdots v_n\). Now we can be greedy color by the order \(v_n \cdots v_i\) where \(v_i\) has degree \(\leq 5\) 
+\end{proof}
+
+\subsection{Planar Regular Graph}
+\begin{definition}[regular planar]
+    \label{def:regular planar}
+    A connected graph is called planar regular if it has an embedding where the vertices all have the same number of sides, which implies the duel is regular.
+\end{definition}  
+
+\begin{question}
+    What are all planer regular graphs?
+\end{question}
+
+\(G\) is k regular \(2 |E| = k |V|\)
+planar regular \(2 |E| = l |F|\) 
+
+and using Euler we get \(\frac{1}{k} + \frac{1}{l} = \frac{1}{|E|} + \frac{1}{2} > \frac{1}{2}\) 
