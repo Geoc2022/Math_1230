@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\author{Math 123}
+\date{Due April 7, 2023 by midnight} 
+\title{Final Project Proposal}
+
+\usepackage{graphicx,xypic}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{problem}{Problem}
+\renewcommand*{\proofname}{{\color{blue}Solution}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Math 123, Final project proposal}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+\input{../tikz_import.tex}
+
+\begin{document}
+
+\maketitle
+
+% You are required to put your name here:
+{\bf\Large Name: Rafae Ash, George Chemmala} 
+
+
+\vspace{.3in}
+Instructions. Choose a final project and a final project partner (groups of 2 - anything different needs approval). I would like you to submit the following information:
+
+\begin{enumerate}
+	\item[(i)] \emph{Project title:} Knight's Tour
+	\item[(ii)] \emph{One paragraph about the focus and scope of your project. (Don't be overly ambitious. The presentation is 10 minutes! You should pick a single question/problem/theorem to focus on.)}
+		
+		The presentation will focus on the Knight's tour problem and its relationship with graph theory. We will discuss how the problem of finding a knight's tour on a chessboard can be translated into a graph theory problem of finding a Hamiltonian path on the board, a subset of the Hamiltonian path problem, which in itself is a subset of the NP-hard traveling salesman problem. We will highlight the fact that while the traveling salesman problem is NP-hard, the Knight's tour problem is a special case that can be solved in linear time.
+
+		Some topics we may briefly cover given time:
+		\begin{enumerate}
+			\item History
+			\item Number of tours
+		\end{enumerate}
+
+	\item[(iii)] \emph{A list of at least two references you will use (not Wikipedia)}
+		\begin{enumerate}
+			\item[1.] \url{https://web.archive.org/web/20151010071713/http://faculty.olin.edu:80/~sadams/DM/ktpaper.pdf} (general overview)
+			
+			\item[2.] \url{http://www.mayhematics.com/t/t.htm} (examples/history)
+			
+			\item[3.] \url{https://www.tandfonline.com/doi/pdf/10.1080/0025570X.1991.11977627} (existence theorem)
+			
+			\item[4.] \url{https://www.sciencedirect.com/science/article/pii/0166218X9200170Q?via\%3Dihub}
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}

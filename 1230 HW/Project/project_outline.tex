@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+
+\author{Math 123}
+\date{Due April 15, 2023 by midnight} 
+\title{Final Project Outline}
+
+\usepackage{graphicx,xypic}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{problem}{Problem}
+\renewcommand*{\proofname}{{\color{blue}Solution}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Math 123, Final project outline}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+\input{../tikz_import.tex}
+
+\begin{document}
+
+\maketitle
+
+% You are required to put your name here:
+{\bf\Large Name: Rafi Ash, George Chemmala}
+
+Instructions. This should contain a step-by-step description of what you plan to cover in your presentation. I am looking for (1) organization, (2) scope, and (3) detail. The organization should be clear and easy to follow. The outline should be presentable within the 10-minutes time limit. There should be enough detail that I can understand the math of it, even if I'm unfamiliar with the topic (e.g. you should want to include definitions and theorem statements). Give me an idea for which things you will explain in depth vs briefly summarize (most things will have to be brief!). I've included an example below.
+
+Submit this as a group on Gradescope. One submission per group!
+
+\textbf{Project topic:} Knight’s Tour, Hamiltonian Circuit Problem, the Traveling Salesman, and NP-hard solutions
+
+\textbf{Project goal:} Define NP-hard and NP-complete problems and apply this to the Traveling Salesman, Hamiltonian Circuit, and the Knight’s Tour problems. Understand the relationship between NP-hard problems and NP-complete specialized subproblems 
+
+\begin{itemize}
+	\item[1.] Warm-up (3 minutes):
+		\begin{itemize}
+			\item[a.] Classifying NP and P-hard problems (maybe from problems on the presentation list?):
+				\begin{itemize}
+					\item[1.] Sudoku
+					\item[2.] Chess
+					\item[3.] Traveling Salesman
+					\item[4.] Tic-Tac-Toe
+					\item[5.] NxN Checkers
+					\item[6.] Arithmetic Operations
+					\item[7.] Euclidean Algs
+				\end{itemize}
+		\end{itemize}
+	\item[2.] Definitions/Explanations (6 minutes): 
+		\begin{itemize}
+			\item[a.] What are NP-hard problems?
+
+				Provide a brief explanation since full explanation is difficult, and keep in line with the examples.
+
+
+			\item[b.] Introduce Knight’s tour as a subproblem of Hamiltonian Circuit (obvious) 
+				
+				In the Knight's tour we see that we are trying to find a tour that the knight can reach every tile, which is equivalent to find a tour to reach every vertex.
+
+
+			\item[c.] Traveling Salesman (non-obvious). 
+		
+			Constructing weights of the movements to reflect the Traveling salesman problem with weights assigned to each edge based on adjacency (1 or 2) and a path of distance n is equivalent to Hamiltonian circuit.
+			\\	
+
+			We assume that the Knight’s tour problem has already been introduced in other students' presentations. We would like to use the Knight’s Tours as a starting point to explore the Hamiltonian Circuit Problem and the Traveling Salesman problem. The Knight’s Tour is a P-hard subproblem of both HCP which is NP-complete and TSP which is NP-hard.
+
+		\end{itemize}
+	\item[3.] Main Takeaways and Results (1 minute):
+	\begin{itemize}
+		\item[a.] Breaking down NP-hard problems into lower complexity subproblems is a way to manageably approach them
+		\item[b.] Computational possibilities and development
+	\end{itemize}
+\end{itemize}
+
+\end{document}

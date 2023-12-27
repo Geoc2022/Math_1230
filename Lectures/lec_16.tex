@@ -1,0 +1,48 @@
+\lecture{16}{2023-04-11}{}
+
+Lower bounds
+
+\begin{proposition}
+    \(R(m,m) > n\)
+    \begin{enumerate}
+        \item We can find an edge 2-coloring of \(K_n\) that does not contain monochromatic \(K_m\), or we can find \(H\) s.t. \(G\) and \(\bar{G}\) doesn't contain \(K_m\).
+        
+        \item Probabilistic Method:
+        There are \(2^{{n \choose 2}}\) coloring. And there are \({n \choose m}\) \(K_n\) in \(K_m\). Let's label them \(X_1, X_2, \cdots X_{{n \choose m}} \). And there are \(2 \cdot 2^{{n \choose 2} - {m \choose 2}}\) coloring which have \(X_i\) monochromatic. Therefore, at maximum the number of total coloring with some \(X_i\) monochromatic is \(\leq {n \choose m} 2 \cdot 2^{{n \choose 2} - {m \choose 2}}\).
+        \begin{eqnarray*}
+            {n \choose m} 2 \cdot 2^{{n \choose 2} - {m \choose 2}} \leq 2^{{n \choose 2}} \\
+            {n \choose m} 2 \cdot 2^{- {m \choose 2}} \leq 1 \\
+            n^m 2 \cdot 2^{- {m \choose 2}} \leq 1 \\
+            n < 2^{\frac{m}{2}}
+        \end{eqnarray*} 
+    \end{enumerate}
+\end{proposition} 
+
+\subsection{Ramsey and Fermat}
+\begin{theorem}[Fermat]
+    \label{thm:fermat}
+    For \(n \geq 3\), \(X^n + Y^n = Z^n\) has no nontrivial integer solutions
+\end{theorem} 
+\begin{proof}
+    There is a truly marvelous proof of this which is too long to fit in these notes
+\end{proof}
+
+\begin{question}
+    Does \(X^n + Y^n = Z^n\) have solutions in \(\Z / m \Z\)? 
+\end{question}
+
+\begin{theorem}[Schur]
+    \label{thm:schur}
+    \(\exists N\) s.t. for a prime \(p > N\) then 
+    \[
+        X^n + Y^n = Z^n
+    \] has solution in \(\Z / p \Z\) 
+\end{theorem}
+
+\begin{proposition}
+    Any \(n\)-coloring of \(1\cdots m\) has monochromatic solution to \(x + y = z\)  if \(m\) is sufficiently large
+\end{proposition} 
+
+\(\Z / p \Z\) cyclic \(n\)th power has index \(n\) implies there is an \(n\)-coloring of \(1 \cdots p - 1\) Therefore, by Schur's \(\exists X,Y, Z, \eta  \in {1 .. p}\) \(\eta X^n + \eta Y^n = \eta Z^n\)
+
+\section{Random Graphs}

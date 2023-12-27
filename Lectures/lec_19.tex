@@ -1,0 +1,150 @@
+\lecture{19}{2023-04-20}{}
+
+\section{Graphs and Matrices}
+
+\subsection{Adjacency matrix}
+
+\begin{definition}[adjacency matrix]
+    \label{def:adjacency matrix}
+    A matrix where
+    \[
+        (A_G)_{i,j} = 1 \iff \{v_1, v_j\} \in E
+    \]
+\end{definition}  
+
+\begin{lemma}
+    Given an adjacency matrix \(A\), \((A^k)_{i,j}\) is the number of walks from \(v_i\) to \(v_j\) 
+\end{lemma}
+
+\begin{corollary}
+    \(G\) is connected \(\iff\)	\((A + A^2 + \cdots A^{n-1})_{i,j} \neq 0\) where \(n = |V|\) 
+\end{corollary}
+
+\begin{definition}[diameter]
+    \label{def:diameter}
+    \[
+        d(v_i, v_j) = \min \{k : (A^k)_{i,j} \neq 0\}
+    \]
+\end{definition}
+
+\subsection{Eigenvalues}
+
+\begin{theorem}[Spectral]
+    \label{thm:spectral}
+    \(A\) \(n\) by \(n\) real symmetric matrix has \(n\) eigenvalues 
+\end{theorem}
+\begin{corollary}
+    Non-directed graphs should have adjacency matrix with eigenvalues	
+\end{corollary}
+
+\begin{example}
+    \(K_4\) has eigenvalues \(3,-1, -1, -1\) 
+\end{example}
+
+\begin{example}
+    \(P_4\) has eigenvalues \(\frac{\pm 1 \pm 5}{2}\) 
+\end{example}
+
+We can notice the max eigenvalue is bounded
+\begin{eqnarray*}
+    (Ax)_j = \sum_{k = 1}^{n} A_{j,k} x_k \\ 
+    = \sum_{\{v_jv_k\} \in E} x_k \\
+    \leq \deg(v_j) \cdot \max\{x_k\} \\
+    \leq \max \deg(v_j) \cdot \max\{x_k\} \\
+    \leq \Delta(G) \cdot \max\{x_k\}
+\end{eqnarray*}
+
+For each \(j\)
+\begin{eqnarray*}
+    \lambda \cdot x_j \leq \Delta(G) \cdot \max \{x_k\}
+    \lambda \leq \Delta(G) & \text{Given the max is equal to the avg} 
+\end{eqnarray*}
+
+\begin{theorem}[test]
+    \label{thm:test}
+    Max eigenvalue equaling \(\Delta (G) \iff G\) is regular 
+\end{theorem} 
+\begin{proof}
+    We have shown this in the previous inequality. This is only true if \(x_k\) are all the same
+\end{proof}
+
+\subsection{Multiplicities}
+
+\begin{question}
+    How many district eigenvalues for \(A_G\)?
+\end{question}
+
+\begin{proposition}
+    For any \(n x n\) \(A\):
+    \[
+        A^m + c_1 A^{m-1} \cdots c_m I = 0 
+    \]
+    for some \(c_1 \cdots c_m \in \R\)
+\end{proposition}
+
+\begin{definition}[min polynomial]
+    \label{def:min polynomial}
+    The polynomial of min degree that \(A\) satisfies by the above construction
+
+    For \(A_G\) the min polynomial has roots of the eigenvalues with multiplicity one
+\end{definition}  
+
+\begin{proposition}
+    If \(diam(G) = k\) then \(A\) does not satisfy polynomial of degree \(k\) 
+\end{proposition}
+\begin{proof}
+    Suppose \(A\) satisfies a polynomial of degree \(k\), the diameter. Therefore, there exists \(v_i, v_j\) s.t. \(d(v_i, v_j) = k\) Therefore, \((A^l)_{i,j} = 0\) for all \(l < k\). From here the proof is trivial
+\end{proof}
+\begin{corollary}
+    The number of distinct eigenvalue is greater than the diameter of \(G\) 
+\end{corollary}
+
+\subsection{Matrix Tree Theorem}
+
+\begin{definition}[laplacian]
+    \label{def:laplacian}
+    \[
+        L_G = \text{degree matrix} - A_G
+    \]
+\end{definition}
+
+\begin{note}
+    \[
+        \det(L) = \frac{1}{n} (\text{product of the nonzero eigenvalues of \(L_G\)})
+    \]
+\end{note} 
+
+\begin{definition}[incidence matix of directed graph]
+    \label{def:incidence matix of directed graph}
+    \[
+        B_{i,j} =
+        \begin{cases}
+            -1 \quad v_i \text{ is the target} \\
+            1 \quad v_j \text{ is the source} \\
+            0 \quad \text{ else}
+        \end{cases}
+    \]
+\end{definition}  
+
+\begin{lemma}
+    \(L_G = B_G \cdot B_G^t\) 
+\end{lemma}
+\begin{proof}
+    Just matrix multiplication
+\end{proof}
+
+\begin{theorem}[Cauchy-Binet]
+    \label{thm:cauchy-binet}
+    Given \(X, Y\), then \(\det(XY) \sum_{s = n x n} \det (X_s) \det(Y_s)\)  
+\end{theorem} 
+
+\begin{theorem}[matrix tree]
+    \label{thm:matrix tree}
+    Let \(L\) be the \((n-1) x (n-1)\) matrix created by removing the first row/collums of \(L_G\). Then \(\det(L)\) is the number of spanning trees of \(G\). 
+\end{theorem}
+\begin{proof}
+    \(G_s\) tree iff \(\det (B_s^\prime) = 0\):
+    Suppose \(G_s\) is not a tree, then \(G_s\) has a cycle, \(C\). By the definition of \(B_s^\prime\), when we consider the column of \(B^\prime\) with edges in \(C\), we see that the columns are linearly dependent. Therefore, the determent is \(0\).
+
+    If \(G_s\) is a tree then \(G_s\) has a leaf \(v_i\) and \(\det (B_s) = \pm \det (B^{\prime\prime})\), where \(B^{\prime\prime} =\) remove the row of \(v_i\) and column of \(B_s^\prime\) where \(v_i\) has nonzero entry. \(B^{\prime \prime}\) is minor corresponding to spanning tree of \(G\setminus{v_i}\) where we can proceed inductively. 
+\end{proof}

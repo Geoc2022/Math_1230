@@ -25,3 +25,14 @@ main.toc
 1230 HW/HW*/123-hw*.synctex.gz
 1230 HW/HW*/123-hw*.toc
 1230 HW/HW*/.DS_Store
+
+1230 HW/Project/*.aux
+1230 HW/Project/*.fdb_latexmk
+1230 HW/Project/*.fls
+1230 HW/Project/*.loe
+1230 HW/Project/*.log
+1230 HW/Project/*.out
+1230 HW/Project/*.synctex.gz
+1230 HW/Project/*.toc
+1230 HW/Project/.DS_Store
+

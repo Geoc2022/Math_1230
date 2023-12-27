@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+
+\author{Math 123}
+\date{Due April 21, 2023 by midnight} 
+\title{Homework 10}
+
+\usepackage{graphicx,xypic}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{problem}{Problem}
+\renewcommand*{\proofname}{{\color{blue}Solution}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Math 123, Homework 10}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+\input{../tikz_import.tex}
+
+\begin{document}
+
+\maketitle
+
+% You are required to put your name here:
+{\bf\Large Name: George Chemmala} 
+
+
+\vspace{.3in}
+Topics covered: Ramsey theory, random graphs
+
+Instructions: 
+\begin{itemize}
+\item This assignment must be submitted on Gradescope by the due date. 
+\item If you collaborate with other students (which is encouraged!), please mention this near the corresponding problems. 
+\item Some problems from this assignment come from West's book, as indicated next to the problem. In some cases, the statements on this assignment differ slightly from the book. 
+\item If you are stuck please ask for help (from me or your classmates). Occasionally problems may require ingredients not discussed in the course. 
+\item You may freely use any fact proved in class. In general, you should provide proof for facts used that were not proved in class. 
+\end{itemize}
+
+\pagebreak 
+
+\begin{problem}
+Prove $R(4,4)>17$ using the $17$-vertex graph described in class.\footnote{17 vertices around a circle; connected a given vertex to the vertices distance 1, 2, 4, 8 away.}
+\end{problem}
+
+\begin{proof}
+Let all the vertices be labeled from \(v_0\) to \(v_16\). Now any vertex \(v_i\) is connected to \(v_{i \pm 1}, v_{i \pm 2}, v_{i \pm 4}, v_{i \pm 8}\) where the labels are \(\mod 17\). 
+
+By rotational symmetry we can consider a vertex \(v_i\). Any \(K_4\) will correspond to \(v_i\) and 3 vertices from \(\{v_{i \pm 1}, v_{i \pm 2}, v_{i \pm 4}, v_{i \pm 8}\}\). To simplify notation let \(v_i = 0, v_{i \pm 1} = 1, v_{i \pm 2} = 2 \cdots\) 
+
+Assuming we start with \(0\), we can notice if we choose \(1\) we are forced to choose at least one from \(\{4, 8\}\) but we cannot connect \(1\) to \(\{4, 8\}\) since they are either distance \(3, 7 \not\in \{1, 2, 4, 8\}\) away.  
+
+Therefore, we are forced to choose \(2\) and connect to \(4, 8\). However, \(2\) is a distance \(6 \not\in \{1, 2, 4, 8\}\) from \(8\).
+
+Therefore, there exist no combination of 3 vertices that connect, so there exist no \(K_4\) in the graph.
+
+
+Now we must check the complement, where vertices are a  distance 3, 5, 6, 7 away. We will use the same notation.
+
+Assuming we start with \(0\) we can if we choose \(3\) we are forced to choose at least one from \(\{5, 7\}\) but we cannot connect \(3\) to \(\{5, 7\}\) since they are either distance \(2, 4 \not\in \{3,5,6,7\}\) away.  
+
+Therefore, we are forced to choose \(5\) and connect to \(6, 7\). However, \(5\) is a distance \(1, 2 \not\in \{3,5,6,7\}\) from \(6, 7\).
+
+Therefore, there exist no combination of 3 vertices that connect, so there exist no \(K_4\) in the graph.
+\end{proof}
+
+\pagebreak
+
+\begin{problem}
+Fix a graph $H$ with $k$ vertices. Prove that almost every graph contains $H$ as an induced subgraph.\footnote{Recall: given a collection of vertices in a graph $G$, the induced subgraph is the subgraph consisting of those vertices and all the edges between them that belong to $G$.} \footnote{Hint: Decompose the vertices into groups of size $k$. Consider the event that one these groups spans $H$.}
+\end{problem}
+
+\begin{proof}
+I'm a little confused what the problem is asking but:
+
+The limit of 
+\[
+	{n \choose k} (\frac{1}{2})^k
+\]
+approaches infinity as \(n\) tends to infinity since \({n \choose k}\) grows faster than \(2^{{k}}\) 
+\end{proof}
+
+
+
+\pagebreak
+
+\begin{problem}
+Recall that a graph $G$ satisfies property $(\star)$ if for any collection $u_1,\ldots,u_p$ and $v_1,\ldots,v_q$ of distinct vertices of $G$ there exists a vertex $z$ of $G$ so that $z$ is adjacent to all of the $u_i$ and to none of the $v_j$. Let $G_1,G_2$ be graphs whose vertex sets are countably infinite. Prove that if $G_1$ and $G_2$ satisfy $(\star)$, then $G_1$ and $G_2$ are isomorphic.\footnote{Hint: Enumerate the vertices of $G_1$ and $G_2$ by $x_1,x_2,\ldots$ and $y_1,y_2,\ldots$, respectively. Inductively define an isomorphism $f:V(G_1)\rightarrow V(G_2)$. On odd (resp.\ even) steps of the induction extend $f$ so that the smallest unmatched vertex of $V(G_1)$ (resp.\ $V(G_2)$) is in the domain (resp.\ image) of $f$.}
+\end{problem}
+
+\begin{proof}
+Suppose $G_1$ and $G_2$ satisfy $(\star)$ and let the  vertices of $G_1$ and $G_2$ be enumerated by $x_1,x_2,\ldots$ and $y_1,y_2,\ldots$, respectively.
+
+Let \(G_{1_i}, G_{2_i}\) be isomorphic subgraphs of \(G_1, G_2\). We will construct them by the following.
+
+By induction:
+\begin{enumerate}[align=left]
+	\item[\emph{Base Case:}] (\(i = 1\))
+	
+	Here we have \(G_{1_1}, G_{2_1}\), both consisting of one vertex each. It is clear that these two vertices are isomorphic since they are not connected to anything
+	\item[\emph{Inductive Step:}]  
+
+	By the extension property, there exist \(x_{i} \in G_1, y_{i} \in G_2\) that are connected to the vertex sets of \(G_{1_i}, G_{2_i}\) but not to the remaining vertices in \(G_1, G_2\). Since these vertices \(x_i, y_i\) are connected to vertices which are isomorphic to each other, they themselves must be isomorphic, and we can add them to \(G_{1_i}, G_{2_i}\) to get \(G_{1_{i+1}}, G_{2_{i+1}}\)
+\end{enumerate} 
+
+\end{proof}
+
+\pagebreak
+
+\begin{problem}
+Prove that the Radio graph has the following ``pigeonhole" property: For any partition of the vertex set $V=U_1\cup\cdots\cup U_m$, there exists $j$ so that the subgraph spanned by $U_j$ is isomorphic to $R$. 
+\end{problem}
+
+\begin{proof}
+Suppose all partitions \(G_1, \cdots, G_m\) which correspond to vertex sets \(U_1,\cdots, U_m\) are not Rado.
+
+Since \(G_1\) is not Rado, there exist subsets \(p, q\) of the vertex set \(U_1\) where no vertex in \(G_1\) is adjacent to \(p\) and not adjacent to \(q\).
+
+Since \(G_2, \cdots G_m\) are not Rado, there exist subsets \(w, r\) of the vertex set \(U_2 \cup \cdots \cup U_m\) where no vertex in the corresponding graph \(G^\prime\) is adjacent to \(w\) and not adjacent to \(r\).
+
+Now we have sets \(p \cup w\) and \(q \cup r\) s.t. they are disjoint, so in \(G\), which is Rado, there must be a vertex that connects to either \(p \cup w\) or \(q \cup r\). However, this vertex cannot be in either \(G_1\) or the rest of the graphs by the above reasoning, so we have a contradiction.
+\end{proof}
+
+\pagebreak
+
+
+\begin{problem}[Bonus] Create a meme related to the course. Please submit to the campuswire page for everyone's enjoyment. 
+\end{problem}
+\begin{proof}
+	https://campuswire.com/c/GCDD00E4D/feed/228
+\end{proof}
+
+\pagebreak
+{\it Submit a draft of your final project slides. See other document for instructions.} 
+
+
+\end{document}

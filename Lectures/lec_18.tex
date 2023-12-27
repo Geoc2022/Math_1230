@@ -1,0 +1,59 @@
+\lecture{18}{2023-04-18}{}
+
+\subsection{Erdos-Renyi Random Graphs and Phase Transitions}
+
+\begin{definition}[labled n vertex graphs]
+    \label{def:labled n vertex graphs}
+    Let \(\Omega_{n,p} = \{\text{labeled \(n\) vertex graphs}\}\)  with probability function given by flipping biased coin for each edge where an edge occurs with \(p\) probability.
+\end{definition}
+
+\begin{definition}[phase transition probability function]
+    \label{def:phase transition probability function}
+    We can write \(P(G) = p^{|E|} (1- p)^{{n \choose 2} - |E|}\) 
+\end{definition}  
+
+\begin{example}[threshold function]
+    \label{ex:threshold function}
+    \begin{enumerate}
+			\item[]
+        \item \(t(n) = \ln (n) / n\) is the threshold for connectedness
+        \item \(t(n) = \sqrt{2 \ln(n) / n}\) is the threshold for a diameter of \(2\)
+        \item \(p(n) = o(1 / n)\) (\(p < c / n\) for \(n\) sufficiently large) then \(G\) is a forest  
+        \item \(p(n) ~ c / n\) where \(0 < c < 1\) have cycle of any size
+        \item \(p(n) ~ c / n\) where \(1 < c\) has large component
+    \end{enumerate}
+\end{example} 
+
+\begin{remark}
+    Properties that are monotone, i.e. adding edges to the graph doesn't change the property (ex. connectedness)
+\end{remark}
+
+\subsection{Rado's Graph}
+
+\begin{definition}[rado's graph]
+    \label{def:rado's graph}
+    Let \(V = \N\) and \(\exists {i, j} \in E \iff \text{the \(i\)th digit of \(j\) is odd}\)
+
+    \emph{Properties}
+    \begin{enumerate}
+        \item Robustness - any finite edge/vertex cut does not destroy \(R\)
+        \item \(R \cong \bar{R}\)
+        \item Universal = any finite/countable \(G\) is induced subgraph of R
+        \item Homogeneity - Every isomerism between subgraphs  if \(R\) extension of \(R\) 
+    \end{enumerate}
+\end{definition}  
+
+\begin{definition}[extension property]
+    \label{def:extension property}
+    Given \(u_1 \cdots u_p\) and \(v_1 \cdots v_q\) distinct  \(\exists z\) adjacent to all \(u\)s and none of the \(v\)s 
+\end{definition}  
+
+\begin{theorem}
+    A = \(\{G \in \Omega_{\infty} \text{isomophic to \(R\)}\} \in \Omega_{\infty}\) 
+\end{theorem} 
+\begin{proof}
+    \emph{\(B = \{G \text{ has the extension property }\} \implies P(B) = 1\)}
+        Let us compute the probability that the extension property fails
+        
+        Given \(u_1 \cdots u_p\), \(v_1 \cdots v_q\), \(z_1 \cdots z_r\), then the probability is \({p + q + r \choose p + q} (1 - \frac{1}{2^{p + q}})^{r}\) 
+\end{proof}

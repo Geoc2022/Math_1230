@@ -1,0 +1,41 @@
+\lecture{15}{2023-04-04}{}
+
+\section{Ramsey Theory}
+    
+\begin{question}
+        Given a social network with \(n\) people where any two are whether friends or strangers, how large are there needed for there to exist either \(3\) mutual friends or \(3\) mutual strangers?
+\end{question}
+
+\begin{proposition}
+    You only need \(6\) vertices in order for the above to hold (\(R(3,3) = 6\))
+\end{proposition}
+\begin{proof}
+    Fix any edge \(2\)-coloring of \(K_6\). Fix a vertex \(v\). Notice that it has either more red or more blue edges. Among the incident vertices there are at least \(3\) red edges which connect to \(x,y,z\). If any edge between \(x,y,z\) is red there is a 3 cycle. Therefore, the edges must all be blue which shows that there is a 3 cycle among them.  
+\end{proof}
+
+\begin{definition}[ramsey numbers]
+    \label{def:ramsey numbers}
+    For \(k, l\) define
+    \[
+        R(k, l) = \min (\{n : \text{every edge 2-colring of \(K_n\) has either a red \(K_k\) or blue \(K_l\)}\})
+    \]
+\end{definition}
+
+\begin{theorem}[ramsey]
+    \label{thm:ramsey}
+    \[
+        R(k, l) \leq R(k - 1, l) + R(k, l - 1)
+    \]
+\end{theorem} 
+\begin{proof}
+    Fix vertex \(v\). Among edges incident to \(v\), if there are \(R(k - 1, l)\) red edges or \(R(k, l - 1)\) blue edges we win. 
+
+    By contradiction, assume this is not the case, then the number of edges incident to \(v\) is \(\leq R(k-1 , l) + R(k, l-1) = N - 2\) but in \(K_N\) every vertex has degree \(N-1\) 
+\end{proof}
+
+\subsection{Ramsey Theory for Numbers}
+
+\begin{theorem}[Van Der Waerden]
+    \label{thm:van der waerden}
+    Given \(r, k\) there exist \(N(r, k)\) s.t. for \(n \geq N(r,k)\)  every r-coloring of \(\{1 \cdots n\}\) contains monochromatic arithmetic progression of length \(k\) 
+\end{theorem} 

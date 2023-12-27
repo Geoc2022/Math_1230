@@ -1,0 +1,22 @@
+\lecture{20}{2023-04-25}{}
+
+\subsection{Interoperation of the Laplacian}
+
+\begin{definition}[harmonic]
+    \label{def:harmonic}
+    Given a function \(f: \R^2 \to \R\) we can apply the Laplacian operator where
+    \[
+        Lf - f_{x x} + f_{y y} 
+    \]
+    
+    A function is harmonic if \(Lf = 0\) 
+\end{definition}  
+
+\begin{proposition}
+    If a function is harmonic a point's value is equal to the avg value of the ball around it 
+\end{proposition} 
+
+If \(Lf = 0\) then for each \(i\), \(f(v_i) = \frac{1}{\deg (v_i)} \sum_{v_i, v_j \in E} f(v_j)\), which is the avg of \(f\) given neighbors of \(v_i\)
+
+The multiplicity of \(0\) as an eigenvalue of \(L\) is the number of components of \(G\)
+

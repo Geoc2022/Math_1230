@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+
+\author{Math 123}
+\date{Due April 7, 2023 by midnight} 
+\title{Homework 8}
+
+\usepackage{graphicx,xypic}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{problem}{Problem}
+\renewcommand*{\proofname}{{\color{blue}Solution}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Math 123, Homework 8}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+\input{../tikz_import.tex}
+
+\begin{document}
+
+\maketitle
+
+% You are required to put your name here:
+{\bf\Large Name: George Chemmala} 
+
+
+\vspace{.3in}
+Topics covered: planar graphs, Kuratowski's theorem
+
+Instructions: 
+\begin{itemize}
+\item This assignment must be submitted on Gradescope by the due date. 
+\item If you collaborate with other students (which is encouraged!), please mention this somewhere on the assignment. 
+\item If you are stuck, please ask for help (from me, a TA, a classmate). Use Campuswire!  
+\item You may freely use any fact proved in class. In general, you should provide proof for facts used that were not proved in class. 
+\item Please restrict your solution to each problem to a single page. Usually solutions can be even shorter than that. If your solution is very long, you should think more about how to express it concisely.
+\end{itemize}
+
+
+
+\pagebreak 
+
+
+\begin{problem}
+Prove that the Petersen graph is not planar using Euler's formula (do not use Kuratowski's theorem). \footnote{Hint: you will need to use a problem from HW1.} 
+\end{problem}
+
+\begin{proof}
+Let \(P\) represent the Petersen graph
+
+By contradiction:
+	
+	Assume there exists an embedding \(P\) in \(\mathbb{R}^2\) then by Euler's Formula 
+	\begin{eqnarray*}
+		|F| = 2 - |V| + |E| \\
+		|F| = 2 - 10 + 15 \\
+		|F| = 2 - 5 + 10 \\
+		|F| = 7 \\
+	\end{eqnarray*}
+
+	But each edge has at most \(2\) faces and each face has \(\geq 5\) sides (the minimum cycle size in \(P\) is \(5\)) therefore \(2 |E| \geq 3 |F|\). However, \(2 \cdot 15 = 30 \geq 35 = 5 \cdot 7\) is a contradiction; therefore \(P\) is not planer.
+\end{proof}
+
+\pagebreak
+
+\begin{problem}
+Let $G$ be a connected graph embedded in the plane. Prove that $G$ is bipartite if and only if every region of $\mathbb R^2\setminus G$ has an even number of sides. \footnote{Note: the boundary of a region does \underline{not} necessarily correspond to a cycle in the graph. Make sure you understand why!} \footnote{Hint: for one direction, use induction on the number of regions of $\mathbb R^2\setminus G$.} 
+\end{problem}
+
+\begin{proof}
+	A bipartite graph contains no closed cycle of odd length, so it contains no faces with odd sides. 
+	
+	Reverse direction: Suppose every face has an even number of sides.
+
+	By induction:
+	\begin{enumerate}[align=left]
+		\item[\emph{Base Case:}] (\(|F| = 1\))
+	
+		If \(G\) has only one face then it is a tree, and so bipartite
+		\item[\emph{Inductive Step:}]  
+	
+		Fix edge \(e\) on a cycle in \(G\), this edge borders faces \(F_1, F_2\). By removing \(e\), we remove one side from \(F_1, F_2\) and combine them to have a bigger face \(F_3\) that has the sum of sides of \(F_1\) and \(F_2\) minus \(2\), so it has even sides. 
+		
+		By inductive hypothesis, we know that \(G \setminus e\) is bipartite. Since the vertices \(e\) is connected to have an odd walk between them, adding \(e\) maintains that \(G\) is bipartite. 
+	\end{enumerate} 
+\end{proof}
+
+
+\pagebreak
+
+\begin{problem}
+Prove that the complement of a planar graph with at least $11$ vertices is nonplanar.\footnote{Hint: your solution should be very short.} Give an example of a planar graph with $8$ vertices whose complement is also planar.\footnote{Hint: in fact you can find one that is self-complementary. This should simplify your search.}
+\end{problem}
+
+\begin{proof}
+	Let \(T(n)\) represent the \(n\)th triangle number.
+
+	\begin{eqnarray*}
+		|F| = 2 - |V| + |E| \\
+		|F| = 2 - 11 + |E|
+	\end{eqnarray*}
+
+	Since \(2|E| = 3|F|\):
+	\begin{eqnarray*}
+		2|E| \geq 6 - 3(11) + 3|E| \\
+		2|E| \geq 6 - 33 + 3|E| \\
+		2|E| \geq -27 + 3|E| \\
+		-|E| \geq -27 \\
+		|E| \leq 27 \\
+	\end{eqnarray*}
+
+	\(G\) being planar implies that \(|E| \leq 27\). Therefore, \(\overline{G}\) has greater than \(T(11 - 1) = 55 - 27 = 28\) edges (\(K_{11}\) has \(T(11 - 1) = 55\) edges), which is more than \(27\), which means it's not planar.
+
+\[\begin{tikzcd}
+	% https://q.uiver.app/?q=WzAsOCxbMCwyLCJcXGJ1bGxldCJdLFsxLDIsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbMywyLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzAsMCwiXFxidWxsZXQiXSxbNCw0LCJcXGJ1bGxldCJdLFswLDQsIlxcYnVsbGV0Il0sWzQsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDEsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwyLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDAsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\bullet &&&& \bullet \\
+	\\
+	\bullet & \bullet & \bullet & \bullet \\
+	\\
+	\bullet &&&& \bullet
+	\arrow[no head, from=1-5, to=3-1]
+	\arrow[no head, from=1-5, to=3-2]
+	\arrow[no head, from=1-5, to=3-3]
+	\arrow[no head, from=1-5, to=3-4]
+	\arrow[no head, from=5-5, to=3-4]
+	\arrow[no head, from=5-5, to=3-3]
+	\arrow[no head, from=5-5, to=3-2]
+	\arrow[no head, from=5-5, to=3-1]
+	\arrow[no head, from=1-1, to=1-5]
+	\arrow[no head, from=1-5, to=5-5]
+	\arrow[no head, from=5-5, to=5-1]
+	\arrow[no head, from=3-1, to=3-2]
+	\arrow[no head, from=3-2, to=3-3]
+	\arrow[no head, from=3-3, to=3-4]
+\end{tikzcd}\]
+	This graph was creating using the algorithm from the bonus problem in HW1 
+\end{proof}
+
+\pagebreak
+
+\begin{problem}
+Let $G_n$ be the graph with vertices $v_1,\ldots,v_n$ and an edge between $v_i$ and $v_j$ whenever $|i-j|\le 3$. Prove that $G_n$ is a maximal planar graph.
+\end{problem}
+
+\begin{proof}
+	From class we know that \(G\) is maximal planar \(\iff  G\) is planer and \(|E| = 3|V| - 6\)
+
+	We can see that \(G\) is planer by constuction:
+	\[\begin{tikzcd}
+		% https://q.uiver.app/?q=WzAsMTgsWzEsMCwidl8yIl0sWzAsMiwidl8zIl0sWzIsMiwidl8xIl0sWzUsMiwidl8xIl0sWzQsMCwidl8yIl0sWzMsMiwidl8zIl0sWzQsMSwidl80Il0sWzMsNiwidl8xIl0sWzEsMywidl8yIl0sWzAsNiwidl8zIl0sWzIsNSwidl80Il0sWzEsNCwidl81Il0sWzcsNiwidl8xIl0sWzUsMywidl8yIl0sWzQsNiwidl8zIl0sWzYsNSwidl80Il0sWzUsNCwidl81Il0sWzUsNSwidl82Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMTAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsOCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCw5LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDExLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDgsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsOSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiwxMywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMywxNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCwxMiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiwxNSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSwxMywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSwxNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSwxNiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNiwxMywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNiwxNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxNSwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxNiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNywxNCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+	& {v_2} &&& {v_2} \\
+	&&&& {v_4} \\
+	{v_3} && {v_1} & {v_3} && {v_1} \\
+	& {v_2} &&&& {v_2} \\
+	& {v_5} &&&& {v_5} \\
+	&& {v_4} &&& {v_6} & {v_4} \\
+	{v_3} &&& {v_1} & {v_3} &&& {v_1}
+	\arrow[no head, from=1-2, to=3-1]
+	\arrow[no head, from=3-1, to=3-3]
+	\arrow[no head, from=3-3, to=1-2]
+	\arrow[no head, from=3-6, to=1-5]
+	\arrow[no head, from=1-5, to=3-4]
+	\arrow[no head, from=3-4, to=3-6]
+	\arrow[no head, from=3-6, to=2-5]
+	\arrow[no head, from=1-5, to=2-5]
+	\arrow[no head, from=2-5, to=3-4]
+	\arrow[no head, from=7-4, to=4-2]
+	\arrow[no head, from=4-2, to=7-1]
+	\arrow[no head, from=7-1, to=7-4]
+	\arrow[no head, from=7-4, to=6-3]
+	\arrow[no head, from=6-3, to=4-2]
+	\arrow[no head, from=6-3, to=7-1]
+	\arrow[no head, from=6-3, to=5-2]
+	\arrow[no head, from=5-2, to=4-2]
+	\arrow[no head, from=5-2, to=7-1]
+	\arrow[no head, from=7-8, to=4-6]
+	\arrow[no head, from=4-6, to=7-5]
+	\arrow[no head, from=7-5, to=7-8]
+	\arrow[no head, from=7-8, to=6-7]
+	\arrow[no head, from=6-7, to=4-6]
+	\arrow[no head, from=6-7, to=7-5]
+	\arrow[no head, from=6-7, to=5-6]
+	\arrow[no head, from=5-6, to=4-6]
+	\arrow[no head, from=5-6, to=7-5]
+	\arrow[no head, from=6-6, to=6-7]
+	\arrow[no head, from=6-6, to=5-6]
+	\arrow[no head, from=6-6, to=7-5]
+	\end{tikzcd}\]
+
+	We can place the \(v_{n+1}\) vertex in the region bounded by \(v_{n}, v_{n - 1}, v_{n - 2}\). As repersented in the picture above.
+
+	Since the vertices are connected to the \(3\) vertices to the left (\(v_{i - 3}, v_{i - 2}, v_{i - 1}\)) and right (\(v_{i + 1}, v_{i + 2}, v_{i + 3}\)). All vertices, except for the first \(3\) and last  \(3\), have degree \(6\). However, \(v_{i - 3}, v_{i - 2}, v_{i - 1}\) do not exist for \(i = 1\), \(v_{i - 3}, v_{i - 2}\) do not exist for \(i = 2\),  \(v_{i -3}\) does not exist for \(i = 3\), and analogously for \(i = n, n - 1, n - 2\); therefore, these \(6\) vertices have in total \(12\) (\(2(1 + 2 + 3)\)) less connections than if the aforementioned vertices existed. Therefore, the sum of the degrees of the vertices is \(6n - 12\) and by the degree formula \(2|E| = \sum_{v \in V} \deg(v)\), there must be \(|E| = 3n - 6\), and so \(G\) is maximal planar.
+\end{proof}
+
+
+\pagebreak
+
+{\it Submit a final project proposal. See other document for instructions. This should be submitted separately from the HW assignment: one submission per group.}
+
+
+\end{document}

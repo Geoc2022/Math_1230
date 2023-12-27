@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+
+\author{Math 123}
+\title{Diagrams}
+
+\usepackage{graphicx,xypic}
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{problem}{Problem}
+\renewcommand*{\proofname}{{\color{blue}Solution}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Diagrams}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+\input{../tikz_import.tex}
+
+\definecolor{background-c}{RGB}{33,33,33}
+\pagecolor{background-c}
+
+\begin{document}
+
+% https://q.uiver.app/?q=WzAsMTYsWzAsMCwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsxLDAsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMiwwLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzAsMSwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsxLDEsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMiwxLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzMsMCwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFszLDEsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMywyLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzMsMywiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsyLDIsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMiwzLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzEsMywiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsxLDIsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMCwyLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzAsMywiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsxNSw0LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE1LDEwLCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDUsIiIsMix7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTQsMSwiIiwwLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsOCwiIiwwLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMyw3LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTMsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw0LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDMsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxLCIiLDEseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMCwiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiw1LCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEzLDIsIiIsMix7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNywiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCw2LCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNSwiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDIsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNCwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCwxLCIiLDEseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEyLDMsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTMsMCwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMSwxNCwiIiwwLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet}
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-1, to=2-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-1, to=3-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=2-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=1-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-1, to=1-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=3-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=2-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-4, to=3-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-4, to=2-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=2-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-4, to=1-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-3, to=1-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=2-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-3, to=2-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=1-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-4, to=2-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-4, to=1-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-3, to=2-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=1-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=2-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-3, to=3-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-2, to=1-4]
+\end{tikzcd}\]
+
+
+\[\begin{tikzcd}
+	% https://q.uiver.app/?q=WzAsMTYsWzAsMCwiXFxidWxsZXQiLFswLDAsMzIsMV1dLFsxLDAsIlxcYnVsbGV0IixbMCwwLDYxLDFdXSxbMiwwLCJcXGJ1bGxldCIsWzAsMCwzMiwxXV0sWzAsMSwiXFxidWxsZXQiLFswLDAsNjEsMV1dLFsxLDEsIlxcYnVsbGV0IixbMCwwLDMyLDFdXSxbMiwxLCJcXGJ1bGxldCIsWzAsMCw2MSwxXV0sWzMsMCwiXFxidWxsZXQiLFswLDAsNjEsMV1dLFszLDEsIlxcYnVsbGV0IixbMCwwLDMyLDFdXSxbMywyLCJcXGJ1bGxldCIsWzAsMCw2MSwxXV0sWzMsMywiXFxidWxsZXQiLFswLDAsMzIsMV1dLFsyLDIsIlxcYnVsbGV0IixbMCwwLDMyLDFdXSxbMiwzLCJcXGJ1bGxldCIsWzAsMCw2MSwxXV0sWzEsMywiXFxidWxsZXQiLFswLDAsMzIsMV1dLFsxLDIsIlxcYnVsbGV0IixbMCwwLDYxLDFdXSxbMCwyLCJcXGJ1bGxldCIsWzAsMCwzMiwxXV0sWzAsMywiXFxidWxsZXQiLFswLDAsNjEsMV1dLFsxNSw0LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE1LDEwLCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDUsIiIsMix7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTQsMSwiIiwwLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsOCwiIiwwLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMyw3LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTMsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw0LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDMsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxLCIiLDEseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMCwiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMiw1LCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEzLDIsIiIsMix7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNywiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCw2LCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNSwiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDIsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsNCwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMCwxLCIiLDEseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEyLDMsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTMsMCwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMSwxNCwiIiwwLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} & \textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} & \textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} & \textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} \\
+	\textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} & \textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} & \textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} & \textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} \\
+	\textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} & \textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} & \textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} & \textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} \\
+	\textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} & \textcolor{rgb,255:red,82;green,82;blue,82}{\bullet} & \textcolor{rgb,255:red,156;green,156;blue,156}{\bullet} & \textcolor{rgb,255:red,82;green,82;blue,82}{\bullet}
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-1, to=2-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-1, to=3-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=2-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=1-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-1, to=1-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=3-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=2-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-4, to=3-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-4, to=2-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=2-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-4, to=1-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-3, to=1-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=2-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-3, to=2-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=1-4]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-4, to=2-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-4, to=1-3]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-3, to=2-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=1-2]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=2-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=4-3, to=3-1]
+	\arrow[draw={rgb,255:red,122;green,122;blue,122}, no head, from=2-2, to=1-4]
+\end{tikzcd}\]
+
+\[\begin{tikzcd}
+	% https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzEsMCwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFswLDEsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMSwxLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzEsMywiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsxLDIsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMCwyLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzAsMywiXFxidWxsZXQiLFswLDAsNDgsMV1dLFs3LDMsIiIsMCx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMiwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDAsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet}
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=4-1, to=2-2]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=1-2]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=4-2, to=2-1]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-1]
+\end{tikzcd}\]
+
+\[\begin{tikzcd}
+	% https://q.uiver.app/?q=WzAsOSxbMCwwLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzEsMCwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsxLDIsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMSwxLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzAsMSwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFswLDIsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbMiwwLCJcXGJ1bGxldCIsWzAsMCw0OCwxXV0sWzIsMSwiXFxidWxsZXQiLFswLDAsNDgsMV1dLFsyLDIsIlxcYnVsbGV0IixbMCwwLDQ4LDFdXSxbNSwxLCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIiIsMix7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw2LCIiLDIseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNywiIiwyLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDAsIiIsMSx7ImNvbG91ciI6WzAsMCw0OF0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw0LCIiLDAseyJjb2xvdXIiOlswLDAsNDhdLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzgsMSwiIiwxLHsiY29sb3VyIjpbMCwwLDQ4XSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} \\
+	\textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet} & \textcolor{rgb,255:red,122;green,122;blue,122}{\bullet}
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=1-2]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-1]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=2-1, to=1-3]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-2, to=1-3]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-1, to=2-3]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=2-3, to=1-1]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=2-1]
+	\arrow[color={rgb,255:red,122;green,122;blue,122}, no head, from=3-3, to=1-2]
+\end{tikzcd}\]
+
+\newpage
+\end{document}
